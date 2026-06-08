@@ -1,26 +1,134 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-bg-dark: #0c0b0a; 
+  --color-surface: #171513;
+  --color-surface-elevated: #24201c;
+
+  --color-accent-primary: #d96c4a; /* Terracotta */
+  --color-accent-secondary: #e5c07b; /* Sable / Or doux */
+  --color-accent-alert: #c94a38; /* Rouge argile pour les alertes */
+
+  /* Textes */
+  --color-text-main: #fdfbf7; /* Blanc très légèrement cassé (Sable pur) */
+  --color-text-muted: #a39e99;
+
+  /* Nouveaux ajouts : Variantes de couleurs utiles */
+  --color-accent-primary-hover: #c45a3a;
+  --color-accent-secondary-hover: #d4b06a;
+
+  /* Échelle de marges personnalisées (ex: Marges fluides Pro) */
+  --spacing-section-sm: 3rem;
+  --spacing-section-md: 6rem;
+  --spacing-section-lg: 9rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    @apply bg-bg-dark text-text-main font-sans antialiased selection:bg-accent-primary/30 selection:text-white;
+    line-height: 1.6;
+  }
+
+  /* Scrollbar élégante fondue dans le décor */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-bg-dark;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-elevated rounded-full border border-white/5;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-accent-primary ring-offset-4 ring-offset-bg-dark;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* ===== GLASSMORPHISM (Adapté au ton chaud) ===== */
+  .glass-panel {
+    @apply bg-surface/60 backdrop-blur-md border border-white/[0.04] shadow-[0_4px_24px_-8px_rgba(0,0,0,0.8)] rounded-2xl;
+  }
+
+  /* ===== BOUTONS PREMIUM ===== */
+  .btn {
+    @apply inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 active:scale-[0.97] select-none relative overflow-hidden;
+    letter-spacing: 0.01em;
+  }
+
+  .btn::before {
+    content: '';
+    @apply absolute inset-0 rounded-lg border border-white/10 mix-blend-overlay pointer-events-none;
+  }
+
+  /* Bouton Terracotta (Call to Action Principal) */
+  .btn-primary {
+    @apply bg-accent-primary text-white hover:bg-accent-primary-hover shadow-[0_0_20px_rgba(217,108,74,0.15)] hover:shadow-[0_0_25px_rgba(217,108,74,0.3)];
+  }
+
+  /* Bouton Sable (Actions secondaires) */
+  .btn-secondary {
+    @apply bg-accent-secondary text-bg-dark hover:bg-accent-secondary-hover shadow-[0_0_20px_rgba(229,192,123,0.15)];
+  }
+
+  /* Bouton fantôme avec bordure subtile */
+  .btn-outline {
+    @apply border border-white/10 bg-white/[0.02] text-text-main hover:bg-white/[0.05] hover:border-white/20 backdrop-blur-sm;
+  }
+
+  .btn-sm { @apply px-4 py-2 text-sm; }
+  .btn-md { @apply px-6 py-3 text-base; }
+  .btn-lg { @apply px-8 py-4 text-lg; }
+
+  /* ===== CARTES & INTERACTIONS ===== */
+  .tech-card {
+    @apply bg-surface/60 backdrop-blur-md border border-white/[0.04] rounded-2xl shadow-[0_4px_24px_-8px_rgba(0,0,0,0.8)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-accent-primary/30 hover:shadow-[0_8px_30px_-10px_rgba(217,108,74,0.15)];
+  }
+
+  /* Badges de statut */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border;
+  }
+  .badge-primary { @apply bg-accent-primary/10 text-accent-primary border-accent-primary/20; }
+  .badge-secondary { @apply bg-accent-secondary/10 text-accent-secondary border-accent-secondary/20; }
+}
+
+@layer utilities {
+  /* ===== ANIMATIONS DE REVEAL ===== */
+  .reveal {
+    @apply opacity-0 translate-y-[20px] transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)];
+  }
+  .reveal.revealed {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* ===== TEXTES DÉGRADÉS PREMIUM ===== */
+  .text-gradient-warm {
+    background: linear-gradient(135deg, var(--color-accent-secondary) 0%, #ffffff 50%, var(--color-accent-primary) 100%);
+    @apply bg-clip-text text-transparent;
+  }
+
+  /* ===== FONDS "TECH" ORGANIQUES ===== */
+  .bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(253, 251, 247, 0.02) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(253, 251, 247, 0.02) 1px, transparent 1px);
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
+  }
+
+  /* Lueur d'arrière-plan chaude */
+  .glow-bg {
+    @apply absolute w-[500px] h-[500px] bg-accent-primary/10 rounded-full blur-[120px] pointer-events-none -z-10;
+  }
+
+  /* ===== ESPACEMENTS ET MARGES PREMIUM (FLUIDES) ===== */
+  .margin-section-sm { @apply mt-12 mb-12 md:mt-16 md:mb-16; }
+  .margin-section-md { @apply mt-20 mb-20 md:mt-32 md:mb-32; }
+  .margin-section-lg { @apply mt-32 mb-32 md:mt-48 md:mb-48; }
 }
