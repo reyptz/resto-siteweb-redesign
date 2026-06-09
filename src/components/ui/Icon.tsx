@@ -7,18 +7,23 @@ export type IconType =
   | "tower"
   | "map-pin"
   | "clock"
+  | "calendar"
   | "mail"
   | "chevron-right"
   | "chevron-down"
   | "arrow-right"
   | "arrow-left"
+  | "download"
+  | "search"
   | "check"
   | "x"
+  | "tool"
   | "shield"
   | "handshake"
   | "wrench"
   | "document"
   | "clipboard"
+  | "info"
   | "sparkles";
 interface IconProps extends React.SVGProps<SVGSVGElement> {
   name: IconType;
@@ -98,6 +103,16 @@ export function Icon({ name, size = 24, className, ...props }: IconProps) {
           <polyline points="12 6 12 12 16 14" />{" "}
         </svg>
       );
+    case "calendar":
+      return (
+        <svg {...commonProps}>
+          {" "}
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />{" "}
+          <line x1="16" y1="2" x2="16" y2="6" />{" "}
+          <line x1="8" y1="2" x2="8" y2="6" />{" "}
+          <line x1="3" y1="10" x2="21" y2="10" />{" "}
+        </svg>
+      );
     case "mail":
       return (
         <svg {...commonProps}>
@@ -134,6 +149,23 @@ export function Icon({ name, size = 24, className, ...props }: IconProps) {
           {" "}
           <line x1="19" y1="12" x2="5" y2="12" />{" "}
           <polyline points="12 5 5 12 12 19" />{" "}
+        </svg>
+      );
+    case "download":
+      return (
+        <svg {...commonProps}>
+          {" "}
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />{" "}
+          <polyline points="7 10 12 15 17 10" />{" "}
+          <line x1="12" y1="15" x2="12" y2="3" />{" "}
+        </svg>
+      );
+    case "search":
+      return (
+        <svg {...commonProps}>
+          {" "}
+          <circle cx="11" cy="11" r="8" />{" "}
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />{" "}
         </svg>
       );
     case "check":
@@ -190,6 +222,15 @@ export function Icon({ name, size = 24, className, ...props }: IconProps) {
           {" "}
           <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />{" "}
           <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />{" "}
+        </svg>
+      );
+    case "info":
+      return (
+        <svg {...commonProps}>
+          {" "}
+          <circle cx="12" cy="12" r="10" />{" "}
+          <line x1="12" y1="16" x2="12" y2="12" />{" "}
+          <line x1="12" y1="8" x2="12.01" y2="8" />{" "}
         </svg>
       );
     case "sparkles":
