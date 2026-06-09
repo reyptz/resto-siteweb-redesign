@@ -11,6 +11,7 @@ export type IconType =
   | "chevron-right"
   | "chevron-down"
   | "arrow-right"
+  | "arrow-left"
   | "check"
   | "x"
   | "shield"
@@ -125,6 +126,14 @@ export function Icon({ name, size = 24, className, ...props }: IconProps) {
           {" "}
           <line x1="5" y1="12" x2="19" y2="12" />{" "}
           <polyline points="12 5 19 12 12 19" />{" "}
+        </svg>
+      );
+    case "arrow-left":
+      return (
+        <svg {...commonProps}>
+          {" "}
+          <line x1="19" y1="12" x2="5" y2="12" />{" "}
+          <polyline points="12 5 5 12 12 19" />{" "}
         </svg>
       );
     case "check":
