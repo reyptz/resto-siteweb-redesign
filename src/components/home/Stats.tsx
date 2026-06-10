@@ -10,11 +10,11 @@ interface StatItemProps {
 function StatBlock({ number, accent, label, subtitle }: StatItemProps) {
   return (
     <div className="flex flex-col items-center md:items-start p-6 rounded-2xl glass-panel border-white/5 hover:border-accent-secondary/30 transition-all group reveal">
-      <div className="text-4xl lg:text-5xl font-syne font-extrabold mb-3 text-white group-hover:scale-105 transition-transform origin-left">
+      <div className="text-4xl lg:text-5xl font-syne font-extrabold mb-3 text-text-main group-hover:scale-105 transition-transform origin-left">
         <span className="text-gradient-warm">{accent}</span>
         {number.replace(accent, "")}
       </div>
-      <div className="text-lg font-syne font-bold text-white mb-2">{label}</div>
+      <div className="text-lg font-syne font-bold text-text-main mb-2">{label}</div>
       <div className="text-sm text-text-muted leading-relaxed max-w-xs">{subtitle}</div>
     </div>
   );

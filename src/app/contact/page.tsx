@@ -10,16 +10,16 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="bg-bg-dark min-h-screen text-white pt-24 pb-24 relative overflow-hidden">
+    <div className="bg-bg-main min-h-screen text-text-main pt-24 pb-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(217,108,74,0.05)_0%,transparent_60%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(118,159,205,0.05)_0%,transparent_60%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16 reveal">
-          <div className="badge badge-secondary mb-6 mx-auto">
+          <div className="badge badge-primary mb-6 mx-auto">
             Nous contacter
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-syne font-extrabold text-white mb-6 tracking-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-syne font-extrabold text-text-main mb-6 tracking-tight">
             Contactez-<span className="text-gradient-warm">nous</span>
           </h1>
           <p className="text-lg md:text-xl text-text-muted max-w-2xl mx-auto leading-relaxed">
@@ -30,16 +30,16 @@ export default function ContactPage() {
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           <div className="space-y-8 reveal">
-            <h2 className="text-3xl font-syne font-bold text-white mb-8">
+            <h2 className="text-3xl font-syne font-bold text-text-main mb-8">
               Nos coordonnées
             </h2>
             <div className="grid gap-6">
-              <div className="flex items-start gap-5 p-6 glass-panel border-accent-secondary/20 hover:border-accent-secondary/50 transition-colors group">
-                <div className="w-14 h-14 bg-accent-secondary/10 text-accent-secondary rounded-2xl flex items-center justify-center shrink-0 border border-accent-secondary/20 group-hover:scale-105 transition-transform">
+              <div className="flex items-start gap-5 p-6 glass-panel border-brand-200 hover:border-primary/30 transition-colors group shadow-sm">
+                <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center shrink-0 border border-primary/20 group-hover:scale-105 transition-transform font-bold">
                   <Icon name="map-pin" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-syne font-semibold text-white mb-1">
+                  <h3 className="text-lg font-syne font-semibold text-text-main mb-1">
                     Adresse
                   </h3>
                   <p className="text-text-muted text-sm leading-relaxed">
@@ -49,12 +49,12 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-5 p-6 glass-panel border-accent-primary/20 hover:border-accent-primary/50 transition-colors group">
-                <div className="w-14 h-14 bg-accent-primary/10 text-accent-primary rounded-2xl flex items-center justify-center shrink-0 border border-accent-primary/20 group-hover:scale-105 transition-transform">
+              <div className="flex items-start gap-5 p-6 glass-panel border-brand-200 hover:border-primary/30 transition-colors group shadow-sm">
+                <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center shrink-0 border border-primary/20 group-hover:scale-105 transition-transform font-bold">
                   <Icon name="phone" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-syne font-semibold text-white mb-1">
+                  <h3 className="text-lg font-syne font-semibold text-text-main mb-1">
                     Téléphone
                   </h3>
                   <p className="text-text-muted text-sm mb-1">Standard : +223 20 70 81 71</p>
@@ -62,12 +62,12 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-5 p-6 glass-panel border-white/10 hover:border-white/30 transition-colors group">
-                <div className="w-14 h-14 bg-white/5 text-white rounded-2xl flex items-center justify-center shrink-0 border border-white/10 group-hover:scale-105 transition-transform">
+              <div className="flex items-start gap-5 p-6 glass-panel border-brand-200 hover:border-primary/30 transition-colors group shadow-sm">
+                <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center shrink-0 border border-primary/20 group-hover:scale-105 transition-transform font-bold">
                   <Icon name="mail" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-syne font-semibold text-white mb-1">
+                  <h3 className="text-lg font-syne font-semibold text-text-main mb-1">
                     Email
                   </h3>
                   <p className="text-text-muted text-sm mb-1">info@smtd.ml</p>
@@ -75,18 +75,18 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-5 p-6 glass-panel border-white/10 hover:border-white/30 transition-colors group">
-                <div className="w-14 h-14 bg-white/5 text-white rounded-2xl flex items-center justify-center shrink-0 border border-white/10 group-hover:scale-105 transition-transform">
+              <div className="flex items-start gap-5 p-6 glass-panel border-brand-200 hover:border-primary/30 transition-colors group shadow-sm">
+                <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center shrink-0 border border-primary/20 group-hover:scale-105 transition-transform font-bold">
                   <Icon name="clock" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-syne font-semibold text-white mb-1">
+                  <h3 className="text-lg font-syne font-semibold text-text-main mb-1">
                     Horaires
                   </h3>
                   <p className="text-text-muted text-sm mb-1">
                     Lundi - Vendredi : 07h30 - 16h30
                   </p>
-                  <p className="text-text-muted/60 text-xs font-medium uppercase tracking-widest mt-2">
+                  <p className="text-text-muted/70 text-xs font-semibold uppercase tracking-widest mt-2">
                     Support technique : 24h/24 - 7j/7
                   </p>
                 </div>

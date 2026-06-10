@@ -8,21 +8,21 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <div className="bg-bg-dark min-h-screen text-white pt-24 pb-24 relative overflow-hidden">
+    <div className="bg-bg-main min-h-screen text-text-main pt-24 pb-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(217,108,74,0.05)_0%,transparent_60%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(118,159,205,0.05)_0%,transparent_60%)] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16 reveal">
-          <div className="badge badge-secondary mb-6 mx-auto">CGU</div>
-          <h1 className="text-4xl sm:text-5xl font-syne font-extrabold mb-6 tracking-tight text-white">
+          <div className="badge badge-primary mb-6 mx-auto">CGU</div>
+          <h1 className="text-4xl sm:text-5xl font-syne font-extrabold mb-6 tracking-tight text-text-main">
             Conditions générales <span className="text-gradient-warm">d&apos;utilisation</span>
           </h1>
         </div>
 
-        <div className="glass-panel p-8 md:p-12 border-white/5 space-y-10 reveal">
+        <div className="glass-panel p-8 md:p-12 border-brand-200 space-y-10 reveal shadow-sm">
           <section>
-            <h2 className="text-2xl font-syne font-bold mb-4 text-accent-secondary">
+            <h2 className="text-2xl font-syne font-bold mb-4 text-primary">
               Acceptation des conditions
             </h2>
             <p className="text-text-muted leading-relaxed">
@@ -32,7 +32,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-syne font-bold mb-4 text-accent-secondary">
+            <h2 className="text-2xl font-syne font-bold mb-4 text-primary">
               Utilisation du site
             </h2>
             <p className="text-text-muted leading-relaxed">
@@ -44,7 +44,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-syne font-bold mb-4 text-accent-secondary">Contenu du site</h2>
+            <h2 className="text-2xl font-syne font-bold mb-4 text-primary">Contenu du site</h2>
             <p className="text-text-muted leading-relaxed">
               La SMTD-SA s&apos;efforce d&apos;assurer l&apos;exactitude des informations
               diffusées sur ce site, mais ne peut garantir l&apos;absence d&apos;erreurs
@@ -54,7 +54,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-syne font-bold mb-4 text-accent-secondary">
+            <h2 className="text-2xl font-syne font-bold mb-4 text-primary">
               Limitation de responsabilité
             </h2>
             <p className="text-text-muted leading-relaxed">
@@ -65,7 +65,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-syne font-bold mb-4 text-accent-secondary">
+            <h2 className="text-2xl font-syne font-bold mb-4 text-primary">
               Modification des conditions
             </h2>
             <p className="text-text-muted leading-relaxed">

@@ -8,16 +8,16 @@ export const metadata: Metadata = {
 
 export default function TeamPage() {
   return (
-    <div className="bg-bg-dark min-h-screen text-white pt-24 pb-24 relative overflow-hidden">
+    <div className="bg-bg-main min-h-screen text-text-main pt-24 pb-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(217,108,74,0.05)_0%,transparent_60%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(118,159,205,0.05)_0%,transparent_60%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-20 reveal">
-          <div className="badge badge-secondary mb-6 mx-auto">
+          <div className="badge badge-primary mb-6 mx-auto">
             Notre Structure
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-syne font-extrabold mb-6 tracking-tight text-white">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-syne font-extrabold mb-6 tracking-tight text-text-main">
             Organigramme et <span className="text-gradient-warm">équipes</span>
           </h1>
           <p className="text-lg md:text-xl text-text-muted max-w-2xl mx-auto leading-relaxed">
@@ -26,9 +26,9 @@ export default function TeamPage() {
         </div>
 
         <div className="max-w-4xl mx-auto mb-20 reveal">
-          <div className="glass-panel border-accent-secondary/20 p-10 md:p-16 text-center relative overflow-hidden group">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(229,192,123,0.1),transparent_50%)] pointer-events-none" />
-            <div className="w-32 h-32 mx-auto mb-8 bg-surface-elevated border border-white/10 rounded-[2rem] flex items-center justify-center text-text-muted shadow-xl group-hover:scale-105 transition-transform group-hover:border-accent-secondary/30">
+          <div className="glass-panel border-brand-200 p-10 md:p-16 text-center relative overflow-hidden group shadow-sm">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(118,159,205,0.05),transparent_50%)] pointer-events-none" />
+            <div className="w-32 h-32 mx-auto mb-8 bg-primary/10 border border-primary/20 rounded-[2rem] flex items-center justify-center text-primary shadow-xl group-hover:scale-105 transition-transform">
               <svg
                 className="w-16 h-16"
                 fill="none"
@@ -43,8 +43,8 @@ export default function TeamPage() {
                 />
               </svg>
             </div>
-            <h2 className="text-3xl font-syne font-bold mb-3 text-white">Direction Générale</h2>
-            <p className="text-accent-primary font-medium text-lg tracking-wide uppercase mb-8">Poste à pourvoir</p>
+            <h2 className="text-3xl font-syne font-bold mb-3 text-text-main">Direction Générale</h2>
+            <p className="text-primary font-bold text-lg tracking-wide uppercase mb-8">Poste à pourvoir</p>
             <div className="max-w-2xl mx-auto text-text-muted">
               <p className="text-lg leading-relaxed">
                 La Direction Générale assure la gestion opérationnelle et
@@ -84,9 +84,9 @@ export default function TeamPage() {
           ].map((dept, index) => (
             <div
               key={index}
-              className="glass-panel p-8 border-white/5 hover:border-accent-primary/30 transition-all group"
+              className="glass-panel p-8 border-brand-200 hover:border-primary/30 transition-all group shadow-sm"
             >
-              <div className="w-16 h-16 mb-6 bg-surface-elevated text-accent-primary rounded-2xl flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform shadow-lg">
+              <div className="w-16 h-16 mb-6 bg-primary/10 text-primary rounded-2xl flex items-center justify-center border border-primary/20 group-hover:scale-110 transition-transform shadow-md font-bold">
                 <svg
                   className="w-8 h-8"
                   fill="none"
@@ -101,7 +101,7 @@ export default function TeamPage() {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-syne font-bold mb-3 text-white">{dept.name}</h3>
+              <h3 className="text-xl font-syne font-bold mb-3 text-text-main">{dept.name}</h3>
               <p className="text-text-muted text-sm leading-relaxed">{dept.desc.replace(/'/g, '&apos;')}</p>
             </div>
           ))}

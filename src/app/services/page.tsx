@@ -76,11 +76,11 @@ export default function ServicesPage() {
     },
   ];
   return (
-    <div className="bg-bg-dark min-h-screen text-white pt-24 pb-24">
+    <div className="bg-bg-main min-h-screen text-text-main pt-24 pb-24">
       {/* Hero Banner */}
-      <section className="relative overflow-hidden py-24 border-b border-white/5 bg-surface">
+      <section className="relative overflow-hidden py-24 border-b border-brand-200 bg-white">
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(217,108,74,0.05)_0%,transparent_60%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(118,159,205,0.05)_0%,transparent_60%)] pointer-events-none" />
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center reveal">
           <div className="badge badge-primary mb-6 mx-auto">
@@ -103,10 +103,10 @@ export default function ServicesPage() {
               className={`grid lg:grid-cols-2 gap-12 items-center reveal ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
             >
               <div
-                className={`p-10 rounded-3xl border ${index % 2 === 0 ? "bg-surface-elevated/80 border-accent-primary/20" : "glass-panel border-white/5"}`}
+                className={`p-10 rounded-3xl border ${index % 2 === 0 ? "bg-white border-brand-200" : "glass-panel border-brand-200"}`}
               >
                 <div
-                  className={`w-16 h-16 mb-8 rounded-2xl flex items-center justify-center shadow-lg ${index % 2 === 0 ? "bg-accent-primary/20 text-accent-primary border border-accent-primary/30" : "bg-accent-secondary/20 text-accent-secondary border border-accent-secondary/30"}`}
+                  className={`w-16 h-16 mb-8 rounded-2xl flex items-center justify-center shadow-lg bg-primary/10 text-primary border border-primary/20`}
                 >
                   <svg
                     className="w-8 h-8"
@@ -122,7 +122,7 @@ export default function ServicesPage() {
                     />
                   </svg>
                 </div>
-                <h2 className="text-3xl font-syne font-bold mb-6 text-white">{service.title.replace(/'/g, '&apos;')}</h2>
+                <h2 className="text-3xl font-syne font-bold mb-6 text-text-main">{service.title.replace(/'/g, '&apos;')}</h2>
                 <p className="text-text-muted text-lg leading-relaxed mb-8">
                   {service.description.replace(/'/g, '&apos;')}
                 </p>
@@ -130,7 +130,7 @@ export default function ServicesPage() {
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center gap-4">
                       <div
-                        className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${index % 2 === 0 ? "bg-accent-primary/20 text-accent-primary" : "bg-accent-secondary/20 text-accent-secondary"}`}
+                        className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 bg-primary/10 text-primary`}
                       >
                         <svg
                           className="w-4 h-4"
@@ -146,15 +146,15 @@ export default function ServicesPage() {
                           />
                         </svg>
                       </div>
-                      <span className="text-gray-300 font-medium">{feature}</span>
+                      <span className="text-text-main font-medium">{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className={`aspect-video rounded-3xl flex items-center justify-center border border-white/5 relative overflow-hidden group ${index % 2 === 0 ? "bg-surface-elevated" : "bg-surface"}`}>
+              <div className={`aspect-video rounded-3xl flex items-center justify-center border border-brand-200 relative overflow-hidden group ${index % 2 === 0 ? "bg-white" : "bg-brand-100/20"}`}>
                 <div className="absolute inset-0 bg-grid-pattern opacity-20" />
-                <div className={`absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500 ${index % 2 === 0 ? "bg-[radial-gradient(circle_at_center,rgba(217,108,74,1)_0%,transparent_70%)]" : "bg-[radial-gradient(circle_at_center,rgba(229,192,123,1)_0%,transparent_70%)]"}`} />
-                <div className="text-center text-white/30 relative z-10 group-hover:scale-110 transition-transform duration-500">
+                <div className={`absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500 bg-[radial-gradient(circle_at_center,rgba(118,159,205,1)_0%,transparent_70%)]`} />
+                <div className="text-center text-primary/30 relative z-10 group-hover:scale-110 transition-transform duration-500">
                   <svg
                     className="w-24 h-24 mx-auto mb-4 drop-shadow-xl"
                     fill="none"
@@ -168,7 +168,7 @@ export default function ServicesPage() {
                       d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                     />
                   </svg>
-                  <p className="text-sm font-mono uppercase tracking-widest text-white/50">Illustration</p>
+                  <p className="text-sm font-mono uppercase tracking-widest text-text-muted/50">Illustration</p>
                 </div>
               </div>
             </div>

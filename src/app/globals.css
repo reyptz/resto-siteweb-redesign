@@ -1,26 +1,39 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg-dark: #0c0b0a; 
-  --color-surface: #171513;
-  --color-surface-elevated: #24201c;
+  --font-sans: var(--font-inter), sans-serif;
+  --font-heading: var(--font-outfit), sans-serif;
 
-  --color-accent-primary: #d96c4a; /* Terracotta */
-  --color-accent-secondary: #e5c07b; /* Sable / Or doux */
-  --color-accent-alert: #c94a38; /* Rouge argile pour les alertes */
+  /* Brand Colors from Color Hunt: f7fbfcd6e6f2b9d7ea769fcd */
+  --color-brand-100: #F7FBFC;
+  --color-brand-200: #D6E6F2;
+  --color-brand-300: #B9D7EA;
+  --color-brand-400: #769FCD;
+  --color-brand-500: #5B87BA; /* Darker variant for hover */
 
-  /* Textes */
-  --color-text-main: #fdfbf7; /* Blanc très légèrement cassé (Sable pur) */
-  --color-text-muted: #a39e99;
+  /* Semantic Colors */
+  --color-primary: var(--color-brand-400);
+  --color-primary-hover: var(--color-brand-500);
+  --color-secondary: var(--color-brand-300);
+  --color-secondary-hover: var(--color-brand-200);
+  --color-accent: #334155; /* Slate 700 for high contrast accents */
 
-  /* Nouveaux ajouts : Variantes de couleurs utiles */
-  --color-accent-primary-hover: #c45a3a;
-  --color-accent-secondary-hover: #d4b06a;
+  /* Backgrounds */
+  --color-bg-main: var(--color-brand-100);
+  --color-bg-dark: #1E293B; /* Slate 800 */
+  
+  /* Text */
+  --color-text-main: #1E293B; /* Slate 800 */
+  --color-text-muted: #64748B; /* Slate 500 */
+  --color-text-inverse: #FFFFFF;
 
-  /* Échelle de marges personnalisées (ex: Marges fluides Pro) */
-  --spacing-section-sm: 3rem;
-  --spacing-section-md: 6rem;
-  --spacing-section-lg: 9rem;
+  /* Accent Colors compatibility */
+  --color-accent-primary: var(--color-brand-400);
+  --color-accent-primary-hover: var(--color-brand-500);
+  --color-accent-secondary: var(--color-brand-300);
+  --color-accent-secondary-hover: var(--color-brand-200);
+  --color-surface: #FFFFFF;
+  --color-surface-elevated: #F1F5F9;
 }
 
 @layer base {
@@ -29,106 +42,105 @@
   }
 
   body {
-    @apply bg-bg-dark text-text-main font-sans antialiased selection:bg-accent-primary/30 selection:text-white;
+    @apply bg-bg-main text-text-main font-sans antialiased selection:bg-primary/20 selection:text-text-main;
     line-height: 1.6;
   }
 
-  /* Scrollbar élégante fondue dans le décor */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+
+  /* Scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-bg-dark;
+    @apply bg-bg-main;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-surface-elevated rounded-full border border-white/5;
+    @apply bg-brand-300 rounded-full border border-black/5;
   }
 
   *:focus-visible {
-    @apply outline-none ring-2 ring-accent-primary ring-offset-4 ring-offset-bg-dark;
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-bg-main;
   }
 }
 
 @layer components {
-  /* ===== GLASSMORPHISM (Adapté au ton chaud) ===== */
+  /* ===== GLASSMORPHISM ===== */
   .glass-panel {
-    @apply bg-surface/60 backdrop-blur-md border border-white/[0.04] shadow-[0_4px_24px_-8px_rgba(0,0,0,0.8)] rounded-2xl;
+    @apply bg-white/70 backdrop-blur-md border border-black/5 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.06)] rounded-2xl;
+  }
+  
+  .glass-panel-dark {
+    @apply bg-bg-dark/80 backdrop-blur-md border border-white/10 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.2)] rounded-2xl;
   }
 
-  /* ===== BOUTONS PREMIUM ===== */
+  /* ===== BUTTONS ===== */
   .btn {
-    @apply inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 active:scale-[0.97] select-none relative overflow-hidden;
-    letter-spacing: 0.01em;
+    @apply inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 active:scale-[0.97] select-none;
   }
 
-  .btn::before {
-    content: '';
-    @apply absolute inset-0 rounded-lg border border-white/10 mix-blend-overlay pointer-events-none;
-  }
-
-  /* Bouton Terracotta (Call to Action Principal) */
   .btn-primary {
-    @apply bg-accent-primary text-white hover:bg-accent-primary-hover shadow-[0_0_20px_rgba(217,108,74,0.15)] hover:shadow-[0_0_25px_rgba(217,108,74,0.3)];
+    @apply bg-primary text-white hover:bg-primary-hover shadow-[0_4px_12px_rgba(118,159,205,0.2)] hover:shadow-[0_6px_16px_rgba(118,159,205,0.3)];
   }
 
-  /* Bouton Sable (Actions secondaires) */
   .btn-secondary {
-    @apply bg-accent-secondary text-bg-dark hover:bg-accent-secondary-hover shadow-[0_0_20px_rgba(229,192,123,0.15)];
+    @apply bg-secondary text-text-main hover:bg-secondary-hover shadow-[0_4px_12px_rgba(185,215,234,0.2)] hover:shadow-[0_6px_16px_rgba(185,215,234,0.3)];
   }
 
-  /* Bouton fantôme avec bordure subtile */
   .btn-outline {
-    @apply border border-white/10 bg-white/[0.02] text-text-main hover:bg-white/[0.05] hover:border-white/20 backdrop-blur-sm;
+    @apply border border-brand-300 bg-white text-text-main hover:bg-brand-100 hover:border-brand-400 shadow-sm;
   }
 
   .btn-sm { @apply px-4 py-2 text-sm; }
   .btn-md { @apply px-6 py-3 text-base; }
   .btn-lg { @apply px-8 py-4 text-lg; }
 
-  /* ===== CARTES & INTERACTIONS ===== */
-  .tech-card {
-    @apply bg-surface/60 backdrop-blur-md border border-white/[0.04] rounded-2xl shadow-[0_4px_24px_-8px_rgba(0,0,0,0.8)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-accent-primary/30 hover:shadow-[0_8px_30px_-10px_rgba(217,108,74,0.15)];
+  /* ===== CARDS ===== */
+  .service-card {
+    @apply bg-white border border-brand-200 rounded-2xl p-6 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg;
   }
 
-  /* Badges de statut */
-  .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border;
+  /* ===== TECH CARD ===== */
+  .tech-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg;
   }
-  .badge-primary { @apply bg-accent-primary/10 text-accent-primary border-accent-primary/20; }
-  .badge-secondary { @apply bg-accent-secondary/10 text-accent-secondary border-accent-secondary/20; }
+
+  /* ===== BADGES ===== */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold border transition-all;
+  }
+  .badge-primary {
+    @apply bg-primary/10 text-primary border-primary/20;
+  }
+  .badge-secondary {
+    @apply bg-secondary/15 text-primary border-secondary/30;
+  }
 }
 
 @layer utilities {
-  /* ===== ANIMATIONS DE REVEAL ===== */
-  .reveal {
-    @apply opacity-0 translate-y-[20px] transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)];
-  }
-  .reveal.revealed {
-    @apply opacity-100 translate-y-0;
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
   }
 
-  /* ===== TEXTES DÉGRADÉS PREMIUM ===== */
   .text-gradient-warm {
-    background: linear-gradient(135deg, var(--color-accent-secondary) 0%, #ffffff 50%, var(--color-accent-primary) 100%);
+    background: linear-gradient(135deg, var(--color-brand-400) 0%, var(--color-brand-500) 50%, var(--color-accent) 100%);
     @apply bg-clip-text text-transparent;
   }
-
-  /* ===== FONDS "TECH" ORGANIQUES ===== */
+  
   .bg-grid-pattern {
     background-size: 40px 40px;
-    background-image: linear-gradient(to right, rgba(253, 251, 247, 0.02) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(253, 251, 247, 0.02) 1px, transparent 1px);
+    background-image: linear-gradient(to right, rgba(118, 159, 205, 0.08) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(118, 159, 205, 0.08) 1px, transparent 1px);
     mask-image: radial-gradient(circle at center, black, transparent 80%);
     -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
   }
 
-  /* Lueur d'arrière-plan chaude */
-  .glow-bg {
-    @apply absolute w-[500px] h-[500px] bg-accent-primary/10 rounded-full blur-[120px] pointer-events-none -z-10;
+  .reveal-base {
+    @apply opacity-0 translate-y-4 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)];
   }
-
-  /* ===== ESPACEMENTS ET MARGES PREMIUM (FLUIDES) ===== */
-  .margin-section-sm { @apply mt-12 mb-12 md:mt-16 md:mb-16; }
-  .margin-section-md { @apply mt-20 mb-20 md:mt-32 md:mb-32; }
-  .margin-section-lg { @apply mt-32 mb-32 md:mt-48 md:mb-48; }
+  .reveal-active {
+    @apply opacity-100 translate-y-0;
+  }
 }

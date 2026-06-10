@@ -18,22 +18,22 @@ export function TntChecker() {
     switch (status) {
       case "active":
         return (
-          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500/10 text-emerald-700 border border-emerald-500/20">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             Disponible (Actif)
           </span>
         );
       case "progress":
         return (
-          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-500/10 text-amber-800 border border-amber-500/20">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
             Déploiement en cours
           </span>
         );
       case "planned":
         return (
-          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-500/10 text-slate-400 border border-slate-500/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-500/10 text-slate-700 border border-slate-500/20">
+            <span className="w-1.5 h-1.5 rounded-full bg-slate-500" />
             Planifié
           </span>
         );
@@ -45,14 +45,14 @@ export function TntChecker() {
   return (
     <div className="glass-panel w-full max-w-4xl mx-auto rounded-3xl p-6 grid grid-cols-1 md:grid-cols-12 gap-8 relative overflow-hidden">
       {/* Region Selector Panel */}
-      <div className="md:col-span-5 flex flex-col gap-5 border-b md:border-b-0 md:border-r border-white/5 pb-6 md:pb-0 md:pr-8">
+      <div className="md:col-span-5 flex flex-col gap-5 border-b md:border-b-0 md:border-r border-brand-100 pb-6 md:pb-0 md:pr-8">
         <div className="relative">
           <input
             type="text"
             placeholder="Rechercher une région..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-surface-elevated/50 border border-white/10 rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-accent-primary focus:bg-surface-elevated transition-all"
+            className="w-full bg-white border border-brand-200 rounded-xl pl-10 pr-4 py-3 text-sm text-text-main placeholder-gray-400 focus:outline-none focus:border-primary focus:bg-white transition-all shadow-inner"
           />
           <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-text-muted">
             <Icon name="search" size={18} />
@@ -67,17 +67,17 @@ export function TntChecker() {
                 onClick={() => setSelectedRegion(region)}
                 className={`w-full text-left px-4 py-3 rounded-xl text-sm transition-all flex items-center justify-between group ${
                   selectedRegion?.name === region.name
-                    ? "bg-accent-primary/10 text-white font-semibold border border-accent-primary/30"
-                    : "text-text-muted hover:bg-surface-elevated hover:text-white border border-transparent"
+                    ? "bg-primary/10 text-primary font-semibold border border-primary/20"
+                    : "text-text-muted hover:bg-surface-elevated hover:text-text-main border border-transparent"
                 }`}
               >
                 <span>{region.name}</span>
                 <span
                   className={`w-2 h-2 rounded-full transition-transform group-hover:scale-125 ${
                     region.status === "active"
-                      ? "bg-emerald-400"
+                      ? "bg-emerald-500"
                       : region.status === "progress"
-                        ? "bg-amber-400"
+                        ? "bg-amber-500"
                         : "bg-slate-500"
                   }`}
                 />
@@ -96,15 +96,15 @@ export function TntChecker() {
         {selectedRegion ? (
           <div className="flex flex-col gap-8 animate-fadeUp">
             {/* Header info */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/5 pb-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-brand-100 pb-6">
               <div>
-                <h3 className="font-syne font-bold text-3xl text-white mb-3">
+                <h3 className="font-syne font-bold text-3xl text-text-main mb-3">
                   Région de {selectedRegion.name}
                 </h3>
                 <div className="flex flex-wrap gap-3 items-center">
                   {getStatusBadge(selectedRegion.status)}
                   {selectedRegion.status === "active" && (
-                    <span className="text-xs text-emerald-400 font-medium px-3 py-1.5 rounded-lg bg-emerald-500/5">
+                    <span className="text-xs text-emerald-700 font-medium px-3 py-1.5 rounded-lg bg-emerald-500/10">
                       Couverture estimée :{" "}
                       <strong>{selectedRegion.coverage}</strong>
                     </span>
@@ -118,8 +118,8 @@ export function TntChecker() {
             selectedRegion.channels.length > 0 ? (
               <div className="flex flex-col gap-5">
                 <div>
-                  <h4 className="text-sm font-semibold text-white font-syne mb-2 flex items-center gap-2">
-                    <Icon name="tv" size={16} className="text-accent-primary" />
+                  <h4 className="text-sm font-semibold text-text-main font-syne mb-2 flex items-center gap-2">
+                    <Icon name="tv" size={16} className="text-primary" />
                     Chaînes TV & Radio numériques disponibles (
                     {selectedRegion.channels.length})
                   </h4>
@@ -132,14 +132,14 @@ export function TntChecker() {
                   {selectedRegion.channels.map((ch, idx) => (
                     <div
                       key={ch}
-                      className="px-4 py-3 rounded-xl bg-surface-elevated/50 border border-white/5 flex items-center gap-3 text-xs font-semibold text-text-main hover:bg-surface-elevated hover:border-accent-primary/20 transition-all cursor-default"
+                      className="px-4 py-3 rounded-xl bg-surface-elevated/50 border border-brand-100 flex items-center gap-3 text-xs font-semibold text-text-main hover:bg-surface-elevated hover:border-primary/20 transition-all cursor-default"
                     >
                       <span
                         className={`w-2 h-2 rounded-full ${
                           idx < 2
-                            ? "bg-accent-secondary"
+                            ? "bg-secondary"
                             : idx < 4
-                              ? "bg-accent-primary"
+                              ? "bg-primary"
                               : "bg-red-500"
                         }`}
                       />
@@ -149,11 +149,11 @@ export function TntChecker() {
                 </div>
               </div>
             ) : selectedRegion.status === "progress" ? (
-              <div className="text-center py-12 px-6 bg-surface-elevated/30 border border-white/5 rounded-2xl">
+              <div className="text-center py-12 px-6 bg-surface-elevated/30 border border-brand-100 rounded-2xl">
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-amber-500/10 text-amber-500 mb-4 animate-pulse">
                   <Icon name="tool" size={32} />
                 </div>
-                <h4 className="font-syne font-semibold text-lg text-white mb-3">
+                <h4 className="font-syne font-semibold text-lg text-text-main mb-3">
                   Travaux en cours de finalisation
                 </h4>
                 <p className="text-sm text-text-muted max-w-sm mx-auto leading-relaxed">
@@ -163,11 +163,11 @@ export function TntChecker() {
                 </p>
               </div>
             ) : (
-              <div className="text-center py-12 px-6 bg-surface-elevated/30 border border-white/5 rounded-2xl">
+              <div className="text-center py-12 px-6 bg-surface-elevated/30 border border-brand-100 rounded-2xl">
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-slate-500/10 text-slate-400 mb-4">
                   <Icon name="calendar" size={32} />
                 </div>
-                <h4 className="font-syne font-semibold text-lg text-white mb-3">
+                <h4 className="font-syne font-semibold text-lg text-text-main mb-3">
                   Planification réseau
                 </h4>
                 <p className="text-sm text-text-muted max-w-sm mx-auto leading-relaxed">
@@ -179,7 +179,7 @@ export function TntChecker() {
             )}
           </div>
         ) : (
-          <div className="text-center py-16 text-text-muted border border-dashed border-white/10 rounded-2xl">
+          <div className="text-center py-16 text-text-muted border border-dashed border-brand-200 rounded-2xl">
             <Icon
               name="map-pin"
               size={32}

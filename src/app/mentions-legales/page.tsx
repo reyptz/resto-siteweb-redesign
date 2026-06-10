@@ -8,24 +8,24 @@ export const metadata: Metadata = {
 
 export default function LegalNoticePage() {
   return (
-    <div className="bg-bg-dark min-h-screen text-white pt-24 pb-24 relative overflow-hidden">
+    <div className="bg-bg-main min-h-screen text-text-main pt-24 pb-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(217,108,74,0.05)_0%,transparent_60%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(118,159,205,0.05)_0%,transparent_60%)] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16 reveal">
-          <div className="badge badge-secondary mb-6 mx-auto">Légal</div>
-          <h1 className="text-4xl sm:text-5xl font-syne font-extrabold mb-6 tracking-tight text-white">
+          <div className="badge badge-primary mb-6 mx-auto">Légal</div>
+          <h1 className="text-4xl sm:text-5xl font-syne font-extrabold mb-6 tracking-tight text-text-main">
             Mentions <span className="text-gradient-warm">légales</span>
           </h1>
         </div>
 
-        <div className="glass-panel p-8 md:p-12 border-white/5 space-y-10 reveal">
+        <div className="glass-panel p-8 md:p-12 border-brand-200 space-y-10 reveal shadow-sm">
           <section>
-            <h2 className="text-2xl font-syne font-bold mb-4 text-accent-secondary">Éditeur du site</h2>
+            <h2 className="text-2xl font-syne font-bold mb-4 text-primary">Éditeur du site</h2>
             <div className="text-text-muted leading-relaxed space-y-2">
               <p>
-                <strong className="text-white">
+                <strong className="text-text-main">
                   Société Malienne de Transmission et de Diffusion (SMTD-SA)
                 </strong>
               </p>
@@ -37,21 +37,21 @@ export default function LegalNoticePage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-syne font-bold mb-4 text-accent-secondary">
+            <h2 className="text-2xl font-syne font-bold mb-4 text-primary">
               Directeur de la publication
             </h2>
             <p className="text-text-muted leading-relaxed">Directeur Général de la SMTD-SA</p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-syne font-bold mb-4 text-accent-secondary">Hébergement</h2>
+            <h2 className="text-2xl font-syne font-bold mb-4 text-primary">Hébergement</h2>
             <p className="text-text-muted leading-relaxed">
               Ce site est hébergé sur les infrastructures souveraines de la SMTD-SA.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-syne font-bold mb-4 text-accent-secondary">
+            <h2 className="text-2xl font-syne font-bold mb-4 text-primary">
               Propriété intellectuelle
             </h2>
             <p className="text-text-muted leading-relaxed">
@@ -64,7 +64,7 @@ export default function LegalNoticePage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-syne font-bold mb-4 text-accent-secondary">Responsabilité</h2>
+            <h2 className="text-2xl font-syne font-bold mb-4 text-primary">Responsabilité</h2>
             <p className="text-text-muted leading-relaxed">
               La SMTD-SA s&apos;efforce d&apos;assurer l&apos;exactitude et la mise à jour des
               informations diffusées sur ce site. Toutefois, la SMTD-SA ne peut

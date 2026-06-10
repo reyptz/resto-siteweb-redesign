@@ -9,16 +9,19 @@ export const metadata = {
 
 export default function PointsHautsPage() {
   return (
-    <div className="bg-bg-dark min-h-screen text-white pt-20 pb-20">
+    <div className="bg-bg-main min-h-screen text-text-main pt-24 pb-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(118,159,205,0.05)_0%,transparent_60%)] pointer-events-none" />
+
       {/* Hero Banner */}
-      <section className="relative overflow-hidden py-20 border-b border-white/5 bg-surface">
+      <section className="relative overflow-hidden py-20 border-b border-brand-200 bg-surface">
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(217,108,74,0.05)_0%,transparent_60%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(118,159,205,0.05)_0%,transparent_60%)] pointer-events-none" />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 text-xs font-mono text-accent-primary uppercase tracking-wider mb-6 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-mono text-primary uppercase tracking-wider mb-6 hover:text-primary-hover transition-colors font-semibold"
           >
             ← Retour aux services
           </Link>
@@ -38,7 +41,7 @@ export default function PointsHautsPage() {
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-3 gap-12 items-start reveal">
         <div className="lg:col-span-2 flex flex-col gap-8">
           <div>
-            <h2 className="text-2xl font-syne font-bold border-b border-white/5 pb-4 mb-6">
+            <h2 className="text-2xl font-syne font-bold border-b border-brand-200 pb-4 mb-6 text-text-main">
               La colocation d&apos;infrastructures pour optimiser vos coûts
             </h2>
             <p className="text-text-muted text-sm md:text-base leading-relaxed mb-4">
@@ -59,7 +62,7 @@ export default function PointsHautsPage() {
           </div>
 
           <div>
-            <h3 className="text-xl font-syne font-bold mb-6">
+            <h3 className="text-xl font-syne font-bold mb-6 text-text-main">
               Spécifications des sites
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -83,9 +86,9 @@ export default function PointsHautsPage() {
               ].map((spec) => (
                 <div
                   key={spec.title}
-                  className="p-5 rounded-2xl border border-white/5 bg-surface-elevated/50 hover:bg-surface-elevated transition-colors"
+                  className="p-5 rounded-2xl border border-brand-200 bg-white hover:border-primary/30 transition-all shadow-sm"
                 >
-                  <h4 className="text-sm font-syne font-bold text-white mb-2">
+                  <h4 className="text-sm font-syne font-bold text-text-main mb-2">
                     {spec.title.replace(/'/g, "&apos;")}
                   </h4>
                   <p className="text-xs text-text-muted leading-relaxed">
@@ -99,8 +102,8 @@ export default function PointsHautsPage() {
 
         {/* Sidebar Info */}
         <div className="flex flex-col gap-6">
-          <div className="glass-panel p-8 border-accent-secondary/20">
-            <h3 className="font-syne font-bold text-lg mb-6 text-accent-secondary">
+          <div className="glass-panel p-8 border-brand-200">
+            <h3 className="font-syne font-bold text-lg mb-6 text-primary">
               Avantages Mutualisés
             </h3>
             <ul className="flex flex-col gap-5">
@@ -123,11 +126,11 @@ export default function PointsHautsPage() {
                 },
               ].map((item) => (
                 <li key={item.title} className="flex gap-4 items-start">
-                  <div className="w-6 h-6 rounded-full bg-accent-secondary/10 text-accent-secondary flex items-center justify-center shrink-0 mt-0.5 text-xs">
+                  <div className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">
                     ✓
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-white">
+                    <h4 className="text-sm font-bold text-text-main">
                       {item.title.replace(/'/g, "&apos;")}
                     </h4>
                     <p className="text-xs text-text-muted mt-1 leading-relaxed">
@@ -143,7 +146,7 @@ export default function PointsHautsPage() {
 
       {/* CTA section */}
       <section className="max-w-4xl mx-auto px-4 py-16 text-center flex flex-col items-center gap-6 reveal">
-        <h3 className="font-syne font-bold text-2xl md:text-3xl">
+        <h3 className="font-syne font-bold text-2xl md:text-3xl text-text-main">
           Souhaitez-vous planifier une visite de site ?
         </h3>
         <p className="text-base text-text-muted max-w-xl">
@@ -153,7 +156,7 @@ export default function PointsHautsPage() {
         </p>
         <Link
           href="/contact?subject=partenariat&service=Points Hauts"
-          className="btn btn-primary btn-lg mt-4"
+          className="btn btn-primary btn-md mt-4 font-semibold"
         >
           Contacter notre Département Infrastructures
         </Link>

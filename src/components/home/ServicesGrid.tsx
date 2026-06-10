@@ -35,12 +35,12 @@ export const ServicesGrid = () => {
             >
               <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-surface-elevated border border-white/5 shadow-inner group-hover:bg-accent-primary/10 group-hover:border-accent-primary/30 transition-all duration-300">
                 <div
-                  className={`text-2xl ${service.colorClass} group-hover:text-accent-primary transition-colors`}
+                  className={`text-2xl ${service.colorClass} group-hover:text-primary transition-colors`}
                 >
                   <Icon name={service.icon} size={32} />
                 </div>
               </div>
-              <h3 className="text-xl font-syne font-bold text-white mb-3 group-hover:text-accent-secondary transition-colors">
+              <h3 className="text-xl font-syne font-bold text-text-main mb-3 group-hover:text-primary transition-colors">
                 {service.name}
               </h3>
               <p className="text-text-muted text-sm mb-6 leading-relaxed">
@@ -50,7 +50,7 @@ export const ServicesGrid = () => {
                 {service.features.map((feature, idx) => (
                   <span
                     key={idx}
-                    className="px-3 py-1 bg-surface-elevated/80 border border-white/5 text-xs rounded-md text-gray-300"
+                    className="px-3 py-1 bg-surface-elevated/80 border border-white/5 text-xs rounded-md text-text-muted"
                   >
                     {feature}
                   </span>
@@ -59,7 +59,7 @@ export const ServicesGrid = () => {
               <div className="mt-auto pt-4 border-t border-white/5">
                 <Link
                   href={`/services/${service.id}`}
-                  className="inline-flex items-center text-accent-secondary text-sm font-medium hover:text-accent-secondary-hover transition-colors group/link"
+                  className="inline-flex items-center text-primary text-sm font-medium hover:text-primary-hover transition-colors group/link"
                 >
                   Explorer le service
                   <Icon
@@ -77,10 +77,10 @@ export const ServicesGrid = () => {
             style={{ transitionDelay: `${services.length * 100}ms` }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-accent-primary/10 to-surface pointer-events-none" />
-            <div className="relative z-10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-accent-primary/20 text-accent-secondary backdrop-blur-sm border border-accent-secondary/30">
+            <div className="relative z-10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-accent-primary/20 text-primary backdrop-blur-sm border border-primary/30">
               <Icon name="sparkles" size={32} />
             </div>
-            <h3 className="relative z-10 text-2xl font-syne font-bold text-white mb-3">
+            <h3 className="relative z-10 text-2xl font-syne font-bold text-text-main mb-3">
               Besoin d&apos;un devis ?
             </h3>
             <p className="relative z-10 text-sm text-text-muted mb-8 max-w-xs mx-auto">

@@ -34,21 +34,24 @@ const JOBS = [
 
 export default function CarrieresPage() {
   return (
-    <div className="bg-bg-dark min-h-screen text-white pt-24 pb-24 relative overflow-hidden">
+    <div className="bg-bg-main min-h-screen text-text-main pt-24 pb-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(118,159,205,0.05)_0%,transparent_60%)] pointer-events-none" />
+
       {/* Hero Banner */}
-      <section className="relative overflow-hidden py-24 border-b border-white/5 bg-surface">
+      <section className="relative overflow-hidden py-24 border-b border-brand-200 bg-surface">
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(217,108,74,0.08)_0%,transparent_60%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(118,159,205,0.05)_0%,transparent_60%)] pointer-events-none" />
         
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-xs font-mono text-accent-primary uppercase tracking-wider mb-6 hover:text-white transition-colors group"
+            className="inline-flex items-center gap-2 text-xs font-mono text-primary uppercase tracking-wider mb-6 hover:text-primary-hover transition-colors group font-semibold"
           >
             <Icon name="arrow-left" size={14} className="group-hover:-translate-x-1 transition-transform" />
             Retour à l&apos;accueil
           </Link>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-syne font-extrabold mb-6 tracking-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-syne font-extrabold mb-6 tracking-tight text-text-main">
             Rejoignez la <span className="text-gradient-warm">SMTD-SA</span>
           </h1>
           <p className="text-lg md:text-xl text-text-muted max-w-3xl leading-relaxed">
@@ -61,7 +64,7 @@ export default function CarrieresPage() {
 
       {/* Corporate Values */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 reveal">
-        <h2 className="text-3xl font-syne font-bold mb-10 text-white">
+        <h2 className="text-3xl font-syne font-bold mb-10 text-text-main">
           Pourquoi nous rejoindre ?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -81,12 +84,12 @@ export default function CarrieresPage() {
           ].map((v, i) => (
             <div
               key={v.title}
-              className="glass-panel p-8 border-white/5 hover:border-accent-secondary/30 transition-all group"
+              className="glass-panel p-8 border-brand-200 hover:border-primary/30 transition-all group shadow-sm"
             >
-              <div className="w-12 h-12 mb-6 bg-surface-elevated text-accent-secondary rounded-xl flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform">
+              <div className="w-12 h-12 mb-6 bg-primary/10 text-primary rounded-xl flex items-center justify-center border border-primary/20 group-hover:scale-110 transition-transform font-bold">
                 <span className="font-syne font-bold text-xl">{i + 1}</span>
               </div>
-              <h3 className="font-syne font-bold text-white text-xl mb-3">
+              <h3 className="font-syne font-bold text-text-main text-xl mb-3">
                 {v.title.replace(/'/g, '&apos;')}
               </h3>
               <p className="text-sm text-text-muted leading-relaxed">
@@ -98,29 +101,29 @@ export default function CarrieresPage() {
       </section>
 
       {/* Jobs list */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/5 reveal">
-        <h2 className="text-3xl font-syne font-bold mb-10 text-white">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-brand-200 reveal">
+        <h2 className="text-3xl font-syne font-bold mb-10 text-text-main">
           Postes ouverts
         </h2>
         <div className="flex flex-col gap-6 max-w-4xl">
           {JOBS.map((job) => (
             <div
               key={job.title}
-              className="p-8 rounded-2xl glass-panel border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-accent-primary/30 transition-colors group"
+              className="p-8 rounded-2xl glass-panel border-brand-200 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-primary/30 transition-colors group shadow-sm"
             >
               <div className="flex-1">
-                <h3 className="text-xl font-syne font-bold text-white mb-2 group-hover:text-accent-primary transition-colors">
+                <h3 className="text-xl font-syne font-bold text-text-main mb-2 group-hover:text-primary transition-colors">
                   {job.title.replace(/'/g, '&apos;')}
                 </h3>
-                <span className="text-xs font-mono text-accent-secondary block mb-3 uppercase tracking-wider">
+                <span className="text-xs font-mono text-primary font-bold block mb-3 uppercase tracking-wider">
                   {job.department.replace(/'/g, '&apos;')}
                 </span>
                 <p className="text-sm text-text-muted leading-relaxed max-w-2xl">
                   {job.desc}
                 </p>
               </div>
-              <div className="flex md:flex-col items-center md:items-end gap-3 shrink-0 border-t md:border-t-0 md:border-l border-white/10 pt-4 md:pt-0 md:pl-6">
-                <span className="px-3 py-1.5 rounded-lg bg-accent-primary/10 text-accent-primary border border-accent-primary/20 text-xs font-bold uppercase tracking-wider">
+              <div className="flex md:flex-col items-center md:items-end gap-3 shrink-0 border-t md:border-t-0 md:border-l border-brand-200 pt-4 md:pt-0 md:pl-6">
+                <span className="px-3 py-1.5 rounded-lg bg-primary/10 text-primary border border-primary/20 text-xs font-bold uppercase tracking-wider">
                   {job.type}
                 </span>
                 <span className="text-sm text-text-muted font-mono flex items-center gap-2">
@@ -133,10 +136,10 @@ export default function CarrieresPage() {
         </div>
 
         {/* Application details */}
-        <div className="mt-16 p-8 rounded-3xl border border-white/10 bg-surface-elevated/50 max-w-4xl flex flex-col gap-6 relative overflow-hidden group hover:border-accent-secondary/30 transition-colors">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(229,192,123,0.1),transparent_50%)] pointer-events-none" />
+        <div className="mt-16 p-8 rounded-3xl border border-brand-200 bg-white max-w-4xl flex flex-col gap-6 relative overflow-hidden group hover:border-primary/30 transition-colors shadow-sm">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(118,159,205,0.05),transparent_50%)] pointer-events-none" />
           <div className="relative z-10">
-            <h3 className="font-syne font-bold text-2xl text-white mb-4">
+            <h3 className="font-syne font-bold text-2xl text-text-main mb-4">
               Candidature Spontanée
             </h3>
             <p className="text-base text-text-muted leading-relaxed mb-6 max-w-3xl">
@@ -145,14 +148,14 @@ export default function CarrieresPage() {
               motivation pour une candidature spontanée. Nous étudions avec
               attention toutes les demandes.
             </p>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3 text-base text-white/80">
-              <span className="flex items-center gap-2">
-                <Icon name="mail" size={18} className="text-accent-secondary" /> 
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 text-base text-text-main">
+              <span className="flex items-center gap-2 font-medium">
+                <Icon name="mail" size={18} className="text-primary" /> 
                 Envoyer votre candidature à :
               </span>
               <a
                 href="mailto:recrutement@smtd.ml"
-                className="font-mono font-bold text-accent-primary hover:text-accent-secondary transition-colors"
+                className="font-mono font-bold text-primary hover:text-primary-hover transition-colors"
               >
                 recrutement@smtd.ml
               </a>

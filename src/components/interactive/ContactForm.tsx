@@ -114,13 +114,13 @@ export function ContactForm() {
 
   if (success) {
     return (
-      <div className="w-full max-w-2xl mx-auto p-8 lg:p-12 glass-panel border-accent-secondary/30 relative overflow-hidden group">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(229,192,123,0.1),transparent_70%)] pointer-events-none" />
+      <div className="w-full max-w-2xl mx-auto p-8 lg:p-12 glass-panel border-brand-200 relative overflow-hidden group">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(118,159,205,0.05),transparent_70%)] pointer-events-none" />
         <div className="text-center flex flex-col items-center animate-fadeUp relative z-10">
-          <div className="w-20 h-20 rounded-full bg-accent-secondary/20 border border-accent-secondary/40 flex items-center justify-center text-4xl mb-6 text-accent-secondary shadow-lg">
+          <div className="w-20 h-20 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-4xl mb-6 text-primary shadow-lg">
             <Icon name="check" size={40} />
           </div>
-          <h3 className="text-3xl font-syne font-bold text-white mb-4">
+          <h3 className="text-3xl font-syne font-bold text-text-main mb-4">
             Message envoyé !
           </h3>
           <p className="text-text-muted mb-10 max-w-md text-lg">
@@ -143,11 +143,11 @@ export function ContactForm() {
   }
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-8 lg:p-10 glass-panel border-white/10 relative overflow-hidden shadow-2xl">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(217,108,74,0.05),transparent_50%)] pointer-events-none" />
+    <div className="w-full max-w-2xl mx-auto p-8 lg:p-10 glass-panel border-brand-200 relative overflow-hidden shadow-2xl">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(118,159,205,0.05),transparent_50%)] pointer-events-none" />
       
       <div className="mb-8 relative z-10">
-        <h2 className="text-2xl font-syne font-bold text-white mb-2">
+        <h2 className="text-2xl font-syne font-bold text-text-main mb-2">
           Formulaire de Contact
         </h2>
         <p className="text-text-muted text-base">
@@ -155,15 +155,15 @@ export function ContactForm() {
         </p>
       </div>
 
-      <div className="flex flex-wrap gap-2 mb-8 p-1.5 bg-surface-elevated/50 rounded-xl relative z-10 border border-white/5">
+      <div className="flex flex-wrap gap-2 mb-8 p-1.5 bg-surface-elevated rounded-xl relative z-10 border border-brand-100">
         {TABS.map((t) => (
           <button
             key={t.key}
             type="button"
             className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-semibold transition-all ${
               tab === t.key
-                ? "bg-accent-primary text-white shadow-md shadow-accent-primary/20"
-                : "text-text-muted hover:text-white hover:bg-white/5"
+                ? "bg-primary text-white shadow-md shadow-primary/20"
+                : "text-text-muted hover:text-text-main hover:bg-black/5"
             }`}
             onClick={() => handleTabChange(t.key)}
           >
@@ -175,7 +175,7 @@ export function ContactForm() {
       <form onSubmit={handleSubmit} className="space-y-5 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div className="space-y-1.5">
-            <label htmlFor="name" className="text-sm font-medium text-gray-300">
+            <label htmlFor="name" className="text-sm font-medium text-text-muted">
               Nom complet *
             </label>
             <input
@@ -183,14 +183,14 @@ export function ContactForm() {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-5 py-3 bg-surface-elevated border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-accent-primary focus:border-accent-primary transition-all shadow-inner"
+              className="w-full px-5 py-3 bg-white border border-brand-200 rounded-xl text-text-main placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all shadow-inner"
               placeholder="John Doe"
             />
           </div>
           <div className="space-y-1.5">
             <label
               htmlFor="email"
-              className="text-sm font-medium text-gray-300"
+              className="text-sm font-medium text-text-muted"
             >
               Email *
             </label>
@@ -199,7 +199,7 @@ export function ContactForm() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-5 py-3 bg-surface-elevated border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-accent-primary focus:border-accent-primary transition-all shadow-inner"
+              className="w-full px-5 py-3 bg-white border border-brand-200 rounded-xl text-text-main placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all shadow-inner"
               placeholder="john@example.com"
             />
           </div>
@@ -209,7 +209,7 @@ export function ContactForm() {
           <div className="space-y-1.5">
             <label
               htmlFor="phone"
-              className="text-sm font-medium text-gray-300"
+              className="text-sm font-medium text-text-muted"
             >
               Téléphone
             </label>
@@ -218,14 +218,14 @@ export function ContactForm() {
               type="tel"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className="w-full px-5 py-3 bg-surface-elevated border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-accent-primary focus:border-accent-primary transition-all shadow-inner"
+              className="w-full px-5 py-3 bg-white border border-brand-200 rounded-xl text-text-main placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all shadow-inner"
               placeholder="+223 7X XX XX XX"
             />
           </div>
           <div className="space-y-1.5">
             <label
               htmlFor="company"
-              className="text-sm font-medium text-gray-300"
+              className="text-sm font-medium text-text-muted"
             >
               Entreprise / Organisation
             </label>
@@ -234,7 +234,7 @@ export function ContactForm() {
               type="text"
               value={company}
               onChange={(e) => setCompany(e.target.value)}
-              className="w-full px-5 py-3 bg-surface-elevated border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-accent-primary focus:border-accent-primary transition-all shadow-inner"
+              className="w-full px-5 py-3 bg-white border border-brand-200 rounded-xl text-text-main placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all shadow-inner"
               placeholder="Nom de l'entreprise"
             />
           </div>
@@ -245,7 +245,7 @@ export function ContactForm() {
           <div className="space-y-1.5 animate-fadeUp">
             <label
               htmlFor="service"
-              className="text-sm font-medium text-gray-300"
+              className="text-sm font-medium text-text-muted"
             >
               Service souhaité *
             </label>
@@ -254,13 +254,13 @@ export function ContactForm() {
                 id="service"
                 value={service}
                 onChange={(e) => setService(e.target.value)}
-                className="w-full px-5 py-3 bg-surface-elevated border border-white/10 rounded-xl text-white appearance-none focus:outline-none focus:ring-1 focus:ring-accent-primary focus:border-accent-primary transition-all shadow-inner"
+                className="w-full px-5 py-3 bg-white border border-brand-200 rounded-xl text-text-main appearance-none focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all shadow-inner"
               >
-                <option value="" disabled className="text-gray-500">
+                <option value="" disabled className="text-gray-400">
                   Sélectionnez un service
                 </option>
                 {SERVICES.map((s) => (
-                  <option key={s} value={s} className="bg-bg-dark text-white">
+                  <option key={s} value={s} className="bg-white text-text-main">
                     {s}
                   </option>
                 ))}
@@ -276,7 +276,7 @@ export function ContactForm() {
           <div className="space-y-1.5 animate-fadeUp">
             <label
               htmlFor="partnershipType"
-              className="text-sm font-medium text-gray-300"
+              className="text-sm font-medium text-text-muted"
             >
               Type de partenariat *
             </label>
@@ -285,7 +285,7 @@ export function ContactForm() {
               type="text"
               value={partnershipType}
               onChange={(e) => setPartnershipType(e.target.value)}
-              className="w-full px-5 py-3 bg-surface-elevated border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-accent-primary focus:border-accent-primary transition-all shadow-inner"
+              className="w-full px-5 py-3 bg-white border border-brand-200 rounded-xl text-text-main placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all shadow-inner"
               placeholder="Ex: Distributeur, Partenaire technique..."
             />
           </div>
@@ -294,7 +294,7 @@ export function ContactForm() {
         <div className="space-y-1.5">
           <label
             htmlFor="message"
-            className="text-sm font-medium text-gray-300"
+            className="text-sm font-medium text-text-muted"
           >
             Message *
           </label>
@@ -303,13 +303,13 @@ export function ContactForm() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             rows={5}
-            className="w-full px-5 py-3 bg-surface-elevated border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-accent-primary focus:border-accent-primary transition-all resize-none shadow-inner"
+            className="w-full px-5 py-3 bg-white border border-brand-200 rounded-xl text-text-main placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all resize-none shadow-inner"
             placeholder="Dites-nous en plus..."
           />
         </div>
 
         {error && (
-          <div className="p-4 bg-red-500/10 border border-red-500/30 text-red-400 text-sm rounded-xl flex items-center gap-3 animate-fadeUp">
+          <div className="p-4 bg-red-500/10 border border-red-500/30 text-red-600 text-sm rounded-xl flex items-center gap-3 animate-fadeUp">
             <Icon name="x" size={18} className="shrink-0" /> {error}
           </div>
         )}
@@ -318,7 +318,7 @@ export function ContactForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full btn btn-primary flex items-center justify-center gap-2 py-4 text-base shadow-lg shadow-accent-primary/20"
+            className="w-full btn btn-primary flex items-center justify-center gap-2 py-4 text-base shadow-lg shadow-primary/20"
           >
             {loading ? (
               "Envoi en cours..."

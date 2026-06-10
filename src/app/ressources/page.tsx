@@ -16,16 +16,16 @@ export default function ResourcesPage() {
   ];
 
   return (
-    <div className="bg-bg-dark min-h-screen text-white pt-24 pb-24 relative overflow-hidden">
+    <div className="bg-bg-main min-h-screen text-text-main pt-24 pb-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(217,108,74,0.05)_0%,transparent_60%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(118,159,205,0.05)_0%,transparent_60%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16 reveal">
-          <div className="badge badge-secondary mb-6 mx-auto">
+          <div className="badge badge-primary mb-6 mx-auto">
             Documentation
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-syne font-extrabold mb-6 tracking-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-syne font-extrabold mb-6 tracking-tight text-text-main">
             Ressources <span className="text-gradient-warm">documentaires</span>
           </h1>
           <p className="text-lg md:text-xl text-text-muted max-w-2xl mx-auto leading-relaxed">
@@ -38,14 +38,14 @@ export default function ResourcesPage() {
             {documents.map((doc, index) => (
               <div
                 key={index}
-                className="flex flex-col sm:flex-row sm:items-center justify-between p-6 glass-panel border-white/5 hover:border-accent-secondary/30 transition-colors group gap-6"
+                className="flex flex-col sm:flex-row sm:items-center justify-between p-6 glass-panel border-brand-200 hover:border-primary/30 transition-colors group gap-6 shadow-sm"
               >
                 <div className="flex items-center gap-5">
-                  <div className="w-14 h-14 bg-accent-secondary/10 text-accent-secondary rounded-2xl flex items-center justify-center shrink-0 border border-accent-secondary/20 group-hover:scale-105 transition-transform">
+                  <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center shrink-0 border border-primary/20 group-hover:scale-105 transition-transform font-bold">
                     <Icon name="document" size={24} />
                   </div>
                   <div>
-                    <h3 className="text-lg font-syne font-semibold text-white mb-1 group-hover:text-accent-secondary transition-colors">
+                    <h3 className="text-lg font-syne font-semibold text-text-main mb-1 group-hover:text-primary transition-colors">
                       {doc.title.replace(/'/g, '&apos;')}
                     </h3>
                     <p className="text-sm font-mono text-text-muted">
@@ -54,7 +54,7 @@ export default function ResourcesPage() {
                   </div>
                 </div>
                 
-                <button className="btn btn-outline btn-sm w-full sm:w-auto flex items-center justify-center gap-2 px-6">
+                <button className="btn btn-outline btn-sm w-full sm:w-auto flex items-center justify-center gap-2 px-6 font-semibold">
                   Télécharger
                   <Icon name="download" size={16} />
                 </button>

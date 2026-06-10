@@ -39,7 +39,7 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
               <Link
                 href="/#estimator"
-                className="btn btn-green btn-lg w-full sm:w-auto"
+                className="btn btn-primary btn-lg w-full sm:w-auto"
               >
                 Estimer mon projet
                 <Icon name="chevron-right" size={18} className="ml-2" />

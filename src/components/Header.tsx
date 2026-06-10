@@ -22,7 +22,7 @@ export default function Header() {
               <h1 className="text-xl font-syne font-extrabold text-white tracking-tight group-hover:text-accent-secondary transition-colors">
                 SMTD-SA
               </h1>
-              <p className="text-[10px] text-text-muted font-bold uppercase tracking-widest">
+              <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">
                 Infrastructure Numérique
               </p>
             </div>
@@ -40,7 +40,7 @@ export default function Header() {
               <Link
                 key={link.label}
                 href={link.href}
-                className="px-4 py-2 text-sm font-medium text-text-muted hover:text-white hover:bg-white/5 rounded-lg transition-all"
+                className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all"
               >
                 {link.label}
               </Link>
@@ -83,7 +83,7 @@ export default function Header() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="px-4 py-3 text-sm font-medium text-text-muted hover:text-white hover:bg-white/5 rounded-xl transition-all"
+                  className="px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}

@@ -26,7 +26,7 @@ export default function HomePage() {
             <div className="badge badge-primary mb-4 mx-auto">
               Outil interactif
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-syne font-extrabold text-white leading-tight tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-syne font-extrabold text-text-main leading-tight tracking-tight">
               Estimez votre coût <br/>
               <span className="text-gradient-warm">en temps réel</span>
             </h2>

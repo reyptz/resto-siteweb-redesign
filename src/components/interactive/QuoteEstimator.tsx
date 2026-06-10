@@ -55,21 +55,21 @@ export function QuoteEstimator() {
   return (
     <div className="glass-panel w-full max-w-4xl mx-auto p-6 md:p-10 flex flex-col gap-8 relative overflow-hidden">
       {/* Decorative Glow inside the panel */}
-      <div className="absolute -top-32 -left-32 w-64 h-64 bg-accent-primary/20 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute -bottom-32 -right-32 w-64 h-64 bg-accent-secondary/20 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute -top-32 -left-32 w-64 h-64 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute -bottom-32 -right-32 w-64 h-64 bg-secondary/5 rounded-full blur-[100px] pointer-events-none" />
 
       {/* Service Selection Toggle */}
       <div className="flex flex-col items-center gap-5 relative z-10">
-        <div className="flex p-1.5 bg-surface-elevated/80 rounded-xl w-full max-w-md border border-white/5 backdrop-blur-sm">
+        <div className="flex p-1.5 bg-gray-100 rounded-xl w-full max-w-md border border-gray-200 backdrop-blur-sm">
           <button
             onClick={() => setService("fibre")}
-            className={`flex-1 py-3 rounded-lg text-sm font-bold transition-all duration-300 ${service === "fibre" ? "bg-accent-primary text-white shadow-[0_0_15px_rgba(217,108,74,0.4)]" : "text-text-muted hover:text-white hover:bg-white/5"}`}
+            className={`flex-1 py-3 rounded-lg text-sm font-bold transition-all duration-300 ${service === "fibre" ? "bg-primary text-white shadow-[0_4px_12px_rgba(20,181,58,0.2)]" : "text-text-muted hover:text-gray-950 hover:bg-black/5"}`}
           >
             Fibre Optique
           </button>
           <button
             onClick={() => setService("datacenter")}
-            className={`flex-1 py-3 rounded-lg text-sm font-bold transition-all duration-300 ${service === "datacenter" ? "bg-accent-secondary text-bg-dark shadow-[0_0_15px_rgba(229,192,123,0.4)]" : "text-text-muted hover:text-white hover:bg-white/5"}`}
+            className={`flex-1 py-3 rounded-lg text-sm font-bold transition-all duration-300 ${service === "datacenter" ? "bg-secondary text-white shadow-[0_4px_12px_rgba(206,17,38,0.2)]" : "text-text-muted hover:text-gray-950 hover:bg-black/5"}`}
           >
             Data Center
           </button>
@@ -92,11 +92,11 @@ export function QuoteEstimator() {
                       onClick={() => setFibreIdx(idx)}
                       className={`p-4 rounded-xl text-left border transition-all duration-200 ${
                         fibreIdx === idx
-                          ? "border-accent-primary bg-accent-primary/10 text-white shadow-[0_0_15px_rgba(217,108,74,0.15)]"
-                          : "border-white/10 bg-surface-elevated/50 text-text-muted hover:border-accent-primary/50"
+                          ? "border-primary bg-primary/10 text-primary shadow-[0_4px_12px_rgba(20,181,58,0.08)] font-bold"
+                          : "border-gray-200 bg-white text-text-muted hover:border-primary/50"
                       }`}
                     >
-                      <div className="font-syne font-bold text-lg mb-1">
+                      <div className="font-heading font-bold text-lg mb-1 text-gray-900">
                         {tier.label}
                       </div>
                       <div className="text-xs opacity-80">
@@ -119,13 +119,13 @@ export function QuoteEstimator() {
                         onClick={() => setFibreDuration(opt.value)}
                         className={`py-3 rounded-xl text-center text-sm font-bold border transition-all duration-200 flex flex-col items-center justify-center gap-1 ${
                           fibreDuration === opt.value
-                            ? "border-accent-secondary bg-accent-secondary/10 text-accent-secondary shadow-[0_0_15px_rgba(229,192,123,0.15)]"
-                            : "border-white/10 bg-surface-elevated/50 text-text-muted hover:border-accent-secondary/50"
+                            ? "border-secondary bg-secondary/10 text-secondary shadow-[0_4px_12px_rgba(206,17,38,0.08)]"
+                            : "border-gray-200 bg-white text-text-muted hover:border-secondary/50"
                         }`}
                       >
                         <span>{opt.value} mois</span>
                         {opt.discount !== undefined && opt.discount > 0 && (
-                          <span className="block text-[10px] text-accent-secondary/80 bg-accent-secondary/10 px-2 py-0.5 rounded-full">
+                          <span className="block text-[10px] text-secondary/80 bg-secondary/15 px-2 py-0.5 rounded-full">
                             -{opt.discount * 100}%
                           </span>
                         )}
@@ -148,11 +148,11 @@ export function QuoteEstimator() {
                       onClick={() => setDcIdx(idx)}
                       className={`p-4 rounded-xl text-left border transition-all duration-200 ${
                         dcIdx === idx
-                          ? "border-accent-secondary bg-accent-secondary/10 text-white shadow-[0_0_15px_rgba(229,192,123,0.15)]"
-                          : "border-white/10 bg-surface-elevated/50 text-text-muted hover:border-accent-secondary/50"
+                          ? "border-secondary bg-secondary/10 text-secondary shadow-[0_4px_12px_rgba(206,17,38,0.08)] font-bold"
+                          : "border-gray-200 bg-white text-text-muted hover:border-secondary/50"
                       }`}
                     >
-                      <div className="font-syne font-bold text-lg mb-1">
+                      <div className="font-heading font-bold text-lg mb-1 text-gray-900">
                         {rack.label}
                       </div>
                       <div className="text-xs opacity-80">
@@ -166,7 +166,7 @@ export function QuoteEstimator() {
               <div className="space-y-4">
                 <label className="text-sm font-semibold text-text-main uppercase tracking-wider flex justify-between">
                   <span>Stockage additionnel</span>
-                  <span className="text-accent-secondary">{dcStorage} Go</span>
+                  <span className="text-secondary font-bold">{dcStorage} Go</span>
                 </label>
                 <input
                   type="range"
@@ -175,7 +175,7 @@ export function QuoteEstimator() {
                   step="50"
                   value={dcStorage}
                   onChange={(e) => setDcStorage(Number(e.target.value))}
-                  className="w-full h-2 bg-surface-elevated rounded-lg appearance-none cursor-pointer accent-accent-secondary"
+                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-secondary"
                 />
                 <div className="flex justify-between text-xs text-text-muted font-mono">
                   <span>50 Go</span>
@@ -188,32 +188,32 @@ export function QuoteEstimator() {
 
         {/* Right Side: Result */}
         <div className="relative flex flex-col justify-center">
-          <div className="absolute -inset-1 bg-gradient-to-br from-accent-primary/20 via-transparent to-accent-secondary/20 rounded-3xl blur-md pointer-events-none" />
+          <div className="absolute -inset-1 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 rounded-3xl blur-md pointer-events-none" />
 
-          <div className="relative bg-surface-elevated/80 backdrop-blur-xl border border-white/5 rounded-2xl p-8 shadow-2xl flex flex-col items-center justify-center text-center h-full min-h-[300px]">
+          <div className="relative bg-gray-50/90 backdrop-blur-xl border border-gray-200 rounded-2xl p-8 shadow-xl flex flex-col items-center justify-center text-center h-full min-h-[300px]">
             <div className="text-xs text-text-muted uppercase tracking-widest mb-3">
               Estimation
             </div>
-            <div className="text-lg font-bold text-accent-secondary mb-2">
+            <div className="text-lg font-bold text-secondary mb-2">
               {estimate.label}
             </div>
 
             <div className="flex items-baseline gap-1 mb-8">
-              <span className="text-4xl font-syne font-extrabold text-white text-gradient-warm">
+              <span className="text-4xl font-heading font-extrabold text-gray-900">
                 {formatFCFA(estimate.monthly)}
               </span>
               <span className="text-text-muted text-sm font-medium">/mois</span>
             </div>
 
-            <div className="w-full bg-surface/50 border border-white/5 rounded-xl p-5 mb-8">
+            <div className="w-full bg-white border border-gray-200 rounded-xl p-5 mb-8">
               <div className="text-sm text-text-main mb-2">
                 {estimate.details}
               </div>
-              <div className="flex justify-between items-center pt-3 border-t border-white/5">
+              <div className="flex justify-between items-center pt-3 border-t border-gray-200">
                 <span className="text-text-muted text-xs uppercase tracking-wider">
                   Coût total estimé
                 </span>
-                <span className="text-xl font-bold text-accent-primary">
+                <span className="text-xl font-bold text-primary">
                   {formatFCFA(estimate.total)}
                 </span>
               </div>
