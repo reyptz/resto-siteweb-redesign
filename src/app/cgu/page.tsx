@@ -1,80 +1,60 @@
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Conditions générales d'utilisation",
+  title: "Conditions Générales de Réservation & d'Utilisation | Maison Velours Bamako",
   description:
-    "Conditions générales d'utilisation du site web de la Société Malienne de Transmission et de Diffusion.",
+    "Conditions générales d'utilisation et de réservation de la Maison Velours Bamako, Mali.",
 };
 
 export default function TermsPage() {
   return (
-    <div className="bg-bg-main min-h-screen text-text-main pt-24 pb-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(118,159,205,0.05)_0%,transparent_60%)] pointer-events-none" />
-
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16 reveal">
-          <div className="badge badge-primary mb-6 mx-auto">CGU</div>
-          <h1 className="text-4xl sm:text-5xl font-syne font-extrabold mb-6 tracking-tight text-text-main">
-            Conditions générales <span className="text-gradient-warm">d&apos;utilisation</span>
+    <div className="bg-[#0A0A0C] min-h-screen text-white pt-10 pb-24">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div className="text-center space-y-3">
+          <p className="eyebrow-label">Cadre Juridique</p>
+          <h1 className="text-editorial-serif text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
+            Conditions Générales d&apos;Utilisation
           </h1>
+          <p className="text-xs text-zinc-400">
+            En vigueur au 1er janvier 2026 · Maison Velours Bamako · République du Mali
+          </p>
         </div>
 
-        <div className="glass-panel p-8 md:p-12 border-brand-200 space-y-10 reveal shadow-sm">
-          <section>
-            <h2 className="text-2xl font-syne font-bold mb-4 text-primary">
-              Acceptation des conditions
+        <div className="p-8 sm:p-12 rounded-2xl bg-[#121216] border border-zinc-800 space-y-8 text-xs sm:text-sm text-zinc-300 leading-relaxed shadow-2xl">
+          <section className="space-y-2">
+            <h2 className="text-lg font-serif font-bold text-white">
+              1. Objet & Réservations
             </h2>
-            <p className="text-text-muted leading-relaxed">
-              En accédant et en utilisant ce site web, vous acceptez sans
-              réserve les présentes conditions générales d&apos;utilisation.
+            <p>
+              Les présentes conditions régissent l&apos;utilisation de la plateforme numérique de la Maison Velours Bamako et la réservation de tables de restaurant pour nos déjeuners et dîners gastronomiques.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-syne font-bold mb-4 text-primary">
-              Utilisation du site
+          <section className="space-y-2">
+            <h2 className="text-lg font-serif font-bold text-white">
+              2. Modalités d&apos;Accueil & Ponctualité
             </h2>
-            <p className="text-text-muted leading-relaxed">
-              Ce site web est destiné à fournir des informations sur les
-              services de la SMTD-SA. Vous vous engagez à utiliser ce site
-              conformément aux lois et réglementations applicables et à ne pas
-              porter atteinte aux droits de tiers.
+            <p>
+              Afin d&apos;assurer un service au guéridon irréprochable et la fraîcheur des arrivages du jour, nous prions nos convives de nous aviser de toute modification ou annulation au moins 12 heures à l&apos;avance.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-syne font-bold mb-4 text-primary">Contenu du site</h2>
-            <p className="text-text-muted leading-relaxed">
-              La SMTD-SA s&apos;efforce d&apos;assurer l&apos;exactitude des informations
-              diffusées sur ce site, mais ne peut garantir l&apos;absence d&apos;erreurs
-              ou d&apos;omissions. Le contenu est susceptible d&apos;être modifié sans
-              préavis.
+          <section className="space-y-2">
+            <h2 className="text-lg font-serif font-bold text-white">
+              3. Droit Applicable
+            </h2>
+            <p>
+              Les présentes conditions sont régies et interprétées conformément au droit en vigueur en République du Mali.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-syne font-bold mb-4 text-primary">
-              Limitation de responsabilité
-            </h2>
-            <p className="text-text-muted leading-relaxed">
-              La SMTD-SA ne pourra être tenue responsable des dommages directs
-              ou indirects résultant de l&apos;utilisation de ce site web ou de
-              l&apos;impossibilité d&apos;y accéder.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-syne font-bold mb-4 text-primary">
-              Modification des conditions
-            </h2>
-            <p className="text-text-muted leading-relaxed">
-              La SMTD-SA se réserve le droit de modifier les présentes
-              conditions générales d&apos;utilisation à tout moment. Les
-              modifications entreront en vigueur dès leur publication sur le
-              site.
-            </p>
-          </section>
+          <div className="pt-6 border-t border-zinc-800 flex flex-wrap justify-between items-center text-xs text-zinc-400">
+            <span>Contact : reservation@maisonvelours-bamako.ml</span>
+            <Link href="/contact" className="text-amber-400 hover:underline">
+              Contacter la conciergerie à Bamako →
+            </Link>
+          </div>
         </div>
       </div>
     </div>

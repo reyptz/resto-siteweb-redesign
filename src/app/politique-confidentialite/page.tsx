@@ -1,78 +1,50 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Politique de confidentialité",
+  title: "Politique de Confidentialité | Maison Velours Bamako",
   description:
-    "Politique de confidentialité du site web de la Société Malienne de Transmission et de Diffusion.",
+    "Protection des données personnelles - Maison Velours Bamako (Loi N° 2013-015 du Mali).",
 };
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="bg-bg-main min-h-screen text-text-main pt-24 pb-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(118,159,205,0.05)_0%,transparent_60%)] pointer-events-none" />
-
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16 reveal">
-          <div className="badge badge-primary mb-6 mx-auto">Confidentialité</div>
-          <h1 className="text-4xl sm:text-5xl font-syne font-extrabold mb-6 tracking-tight text-text-main">
-            Politique de <span className="text-gradient-warm">confidentialité</span>
+    <div className="bg-[#0A0A0C] min-h-screen text-white pt-10 pb-24">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div className="text-center space-y-3">
+          <p className="eyebrow-label">Protection des Données</p>
+          <h1 className="text-editorial-serif text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
+            Politique de Confidentialité
           </h1>
+          <p className="text-xs text-zinc-400">
+            Conforme à la Loi N° 2013-015 de la République du Mali
+          </p>
         </div>
 
-        <div className="glass-panel p-8 md:p-12 border-brand-200 space-y-10 reveal shadow-sm">
-          <section>
-            <h2 className="text-2xl font-syne font-bold mb-4 text-primary">Introduction</h2>
-            <p className="text-text-muted leading-relaxed">
-              La Société Malienne de Transmission et de Diffusion (SMTD-SA)
-              attache une grande importance à la protection de vos données
-              personnelles. Cette politique de confidentialité décrit comment
-              nous collectons, utilisons et protégeons vos informations lorsque
-              vous visitez notre site web.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-syne font-bold mb-4 text-primary">
-              Collecte des données
+        <div className="p-8 sm:p-12 rounded-2xl bg-[#121216] border border-zinc-800 space-y-8 text-xs sm:text-sm text-zinc-300 leading-relaxed shadow-2xl">
+          <section className="space-y-2">
+            <h2 className="text-lg font-serif font-bold text-white">
+              1. Responsable de Traitement
             </h2>
-            <p className="text-text-muted leading-relaxed">
-              Nous collectons les informations que vous nous fournissez
-              volontairement via nos formulaires de contact : nom, prénom,
-              adresse email, numéro de téléphone et message.
+            <p>
+              Maison Velours Bamako SARL traite vos données personnelles en conformité avec la réglementation de la République du Mali (APDP). Les coordonnées enregistrées lors d&apos;une réservation sont exclusivement destinées à l&apos;accueil et au service en salle.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-syne font-bold mb-4 text-primary">
-              Utilisation des données
+          <section className="space-y-2">
+            <h2 className="text-lg font-serif font-bold text-white">
+              2. Sécurité & Confidentialité
             </h2>
-            <p className="text-text-muted leading-relaxed">
-              Les données collectées sont utilisées exclusivement pour répondre
-              à vos demandes, traiter vos requêtes et vous fournir les
-              informations nécessaires sur nos services.
+            <p>
+              Aucune donnée personnelle n&apos;est vendue ou transmise à des tiers. Les informations sont protégées par des protocoles sécurisés.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-syne font-bold mb-4 text-primary">
-              Protection des données
+          <section className="space-y-2">
+            <h2 className="text-lg font-serif font-bold text-white">
+              3. Contact
             </h2>
-            <p className="text-text-muted leading-relaxed">
-              Nous mettons en œuvre des mesures de sécurité techniques et
-              organisationnelles appropriées pour protéger vos données
-              personnelles contre tout accès non autorisé, modification,
-              divulgation ou destruction.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-syne font-bold mb-4 text-primary">Vos droits</h2>
-            <p className="text-text-muted leading-relaxed">
-              Conformément à la réglementation applicable, vous disposez d&apos;un
-              droit d&apos;accès, de rectification, d&apos;effacement et de limitation du
-              traitement de vos données personnelles. Pour exercer ces droits,
-              veuillez nous contacter à <a href="mailto:info@smtd.ml" className="text-primary font-semibold hover:text-primary-hover hover:underline">info@smtd.ml</a>.
+            <p>
+              Pour toute question relative à vos données : <strong className="text-amber-400">confidentialite@maisonvelours-bamako.ml</strong>.
             </p>
           </section>
         </div>

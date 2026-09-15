@@ -8,22 +8,41 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const {
-      tab,
       name,
       email,
       phone,
-      company,
-      service,
-      partnershipType,
+      subject,
       message,
+      website_hp,
+      _t,
     } = body;
+
+    // Anti-Spam Check 1: Honeypot trap
+    if (website_hp && String(website_hp).trim().length > 0) {
+      return NextResponse.json({
+        success: true,
+        message: "Votre message a bien été enregistré.",
+        id: "spam_filtered",
+        emailSent: false,
+      });
+    }
+
+    // Anti-Spam Check 2: Rapid submission
+    if (_t && typeof _t === "number") {
+      const elapsed = Date.now() - _t;
+      if (elapsed < 1200) {
+        return NextResponse.json(
+          { error: "Soumission trop rapide. Veuillez patienter un instant." },
+          { status: 400 }
+        );
+      }
+    }
 
     // Validate inputs
     if (
       !validateRequired(name) ||
       !validateRequired(email) ||
-      !validateRequired(message) ||
-      !validateRequired(tab)
+      !validateRequired(message)
     ) {
       return NextResponse.json(
         {
@@ -42,22 +61,19 @@ export async function POST(request: Request) {
     }
 
     const submissionDate = new Date().toISOString();
-    const submissionId = Math.random().toString(36).substring(2, 9);
+    const submissionId = "MV-" + Math.random().toString(36).substring(2, 8).toUpperCase();
 
     const submission = {
       id: submissionId,
       date: submissionDate,
-      tab,
       name,
       email,
       phone: phone || "",
-      company: company || "",
-      service: service || "",
-      partnershipType: partnershipType || "",
+      subject: subject || "contact",
       message,
     };
 
-    // Save submission locally to JSON file (as backup database)
+    // Save submission locally
     try {
       const dataDir = path.join(process.cwd(), "submissions");
       if (!fs.existsSync(dataDir)) {
@@ -84,92 +100,60 @@ export async function POST(request: Request) {
     const port = Number(process.env.SMTP_PORT) || 587;
     const user = process.env.SMTP_USER;
     const pass = process.env.SMTP_PASS;
-    const from = process.env.SMTP_FROM || "no-reply@smtd.ml";
-    const to = process.env.CONTACT_RECEIVER_EMAIL || "info@smtd.ml";
+    const from = process.env.SMTP_FROM || "no-reply@maisonvelours.fr";
+    const to = process.env.CONTACT_RECEIVER_EMAIL || "reservation@maisonvelours.fr";
 
     let emailSent = false;
-    let emailErrorMsg = "";
 
     if (host && user && pass) {
       try {
         const transporter = nodemailer.createTransport({
           host,
           port,
-          secure: port === 465, // true for port 465, false for other ports
-          auth: {
-            user,
-            pass,
-          },
+          secure: port === 465,
+          auth: { user, pass },
         });
 
-        const subjectMap = {
-          technique: `[Assistance Technique] Nouvelle demande de ${name}`,
-          devis: `[Demande de Devis] Nouvelle demande de ${name}`,
-          partenariat: `[Proposition de Partenariat] Nouvelle demande de ${name}`,
-        };
-        const mailSubject =
-          subjectMap[tab as keyof typeof subjectMap] ||
-          `[Contact Site Web] Nouveau message de ${name}`;
-
+        const mailSubject = `[Maison Velours] Nouvelle demande (${subject}) de ${name}`;
         const htmlContent = `
-          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
-            <h2 style="color: #1e3a5f; border-bottom: 2px solid #1e3a5f; padding-bottom: 10px;">
-              Nouveau message reçu depuis smtd.ml
-            </h2>
-            <p><strong>Type de demande :</strong> <span style="background-color: #f0f0f0; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">${tab}</span></p>
-            <p><strong>Nom complet :</strong> ${name}</p>
-            <p><strong>Email :</strong> <a href="mailto:${email}">${email}</a></p>
+          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: #0A0A0C; color: #FAF7F2; border-radius: 12px; border: 1px solid #272732;">
+            <h2 style="color: #D4AF37; margin-top: 0;">Maison Velours Paris - Nouvelle Demande</h2>
+            <p><strong>Nom :</strong> ${name}</p>
+            <p><strong>Email :</strong> <a href="mailto:${email}" style="color: #D4AF37;">${email}</a></p>
             ${phone ? `<p><strong>Téléphone :</strong> ${phone}</p>` : ""}
-            ${company ? `<p><strong>Entreprise :</strong> ${company}</p>` : ""}
-            ${service ? `<p><strong>Service concerné :</strong> ${service}</p>` : ""}
-            ${partnershipType ? `<p><strong>Type de partenariat :</strong> ${partnershipType}</p>` : ""}
-            
-            <div style="background-color: #f9f9f9; padding: 15px; border-radius: 6px; margin-top: 20px; border-left: 4px solid #c9a227;">
-              <h3 style="margin-top: 0;">Message :</h3>
-              <p style="white-space: pre-wrap; line-height: 1.6;">${message}</p>
+            <p><strong>Objet :</strong> ${subject}</p>
+            <div style="background: #121216; padding: 16px; border-radius: 8px; margin-top: 16px; border-left: 3px solid #D4AF37;">
+              <p style="white-space: pre-wrap; margin: 0; line-height: 1.6;">${message}</p>
             </div>
-            
-            <p style="font-size: 11px; color: #888; margin-top: 30px; border-top: 1px solid #eee; padding-top: 10px;">
-              Date de soumission : ${new Date().toLocaleString("fr-FR")} | ID : ${submissionId}
-            </p>
+            <p style="font-size: 11px; color: #71717A; margin-top: 24px;">ID : ${submissionId} | ${new Date().toLocaleString("fr-FR")}</p>
           </div>
         `;
 
         await transporter.sendMail({
-          from: `"${name} (Via SMTD)" <${from}>`,
+          from: `"${name}" <${from}>`,
           to,
           replyTo: email,
           subject: mailSubject,
           html: htmlContent,
-          text: `Nouveau message reçu depuis smtd.ml\nType de demande : ${tab.toUpperCase()}\nNom complet : ${name}\nEmail : ${email}\n${phone ? "Téléphone : " + phone : ""}\n${company ? "Entreprise : " + company : ""}\n${service ? "Service concerné : " + service : ""}\n${partnershipType ? "Type de partenariat : " + partnershipType : ""}\nMessage :\n${message}\n----------------------------------------\nDate de soumission : ${new Date().toLocaleString("fr-FR")} | ID : ${submissionId}`,
+          text: `Maison Velours - Demande\nNom : ${name}\nEmail : ${email}\nTéléphone : ${phone}\nObjet : ${subject}\n\nMessage :\n${message}`,
         });
 
         emailSent = true;
       } catch (smtpError) {
-        console.error("SMTP email sending failed:", smtpError);
-        emailErrorMsg =
-          smtpError instanceof Error ? smtpError.message : String(smtpError);
+        console.error("SMTP error:", smtpError);
       }
-    } else {
-      console.warn(
-        "SMTP environment variables are not configured. Email notification skipped.",
-      );
-      emailErrorMsg = "Variables SMTP non configurées dans le fichier .env.";
     }
 
     return NextResponse.json({
       success: true,
-      message: "Votre message a bien été enregistré.",
+      message: "Votre demande a bien été transmise à la Maison Velours.",
       id: submissionId,
       emailSent,
-      ...(emailErrorMsg ? { emailWarning: emailErrorMsg } : {}),
     });
   } catch (error) {
-    console.error("API Contact route error:", error);
+    console.error("API Contact error:", error);
     return NextResponse.json(
-      {
-        error: "Une erreur interne est survenue. Veuillez réessayer plus tard.",
-      },
+      { error: "Une erreur est survenue." },
       { status: 500 },
     );
   }

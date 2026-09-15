@@ -1,0 +1,16 @@
+{
+  "name": "SMTD-SA | Société Malienne de Transmission et de Diffusion",
+  "short_name": "SMTD-SA",
+  "description": "Opérateur public des infrastructures de transmission, diffusion TNT et data centers en République du Mali.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F172A",
+  "theme_color": "#769FCD",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

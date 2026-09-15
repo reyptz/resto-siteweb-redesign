@@ -1,102 +1,116 @@
 "use client";
-import Link from "next/link";
-import { useState } from "react";
-import { Icon } from "@/components/ui/Icon";
 
-export default function Header() {
+import React, { useState } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+
+interface HeaderProps {
+  onOpenReservation?: () => void;
+}
+
+export default function Header({ onOpenReservation }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-bg-dark/80 backdrop-blur-xl border-b border-white/5">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0C] border-b border-zinc-800">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 bg-gradient-to-br from-surface-elevated to-bg-dark rounded-xl flex items-center justify-center shrink-0 shadow-lg border border-white/5 group-hover:border-accent-primary/30 transition-all duration-300">
-              <div className="relative w-6 h-6">
-                <div className="absolute top-0 left-0 w-full h-1.5 bg-accent-primary rounded-sm shadow-[0_0_8px_rgba(217,108,74,0.5)]"></div>
-                <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full h-1.5 bg-white rounded-sm"></div>
-                <div className="absolute bottom-0 left-0 w-full h-1.5 bg-accent-secondary rounded-sm shadow-[0_0_8px_rgba(229,192,123,0.5)]"></div>
-              </div>
+        <div className="flex justify-between items-center h-20 gap-2">
+          {/* Logo Maison Velours Bamako */}
+          <Link href="/" className="flex items-center gap-2.5 shrink-0">
+            <div className="w-9 h-9 bg-zinc-800 border border-zinc-700 rounded-lg flex items-center justify-center shrink-0">
+              <span className="text-amber-400 font-bold font-serif text-base">V</span>
             </div>
-            <div className="hidden sm:block">
-              <h1 className="text-xl font-syne font-extrabold text-white tracking-tight group-hover:text-accent-secondary transition-colors">
-                SMTD-SA
-              </h1>
-              <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">
-                Infrastructure Numérique
-              </p>
+            <div>
+              <span className="text-sm sm:text-base font-serif font-bold text-white tracking-wider block">
+                MAISON VELOURS
+              </span>
+              <span className="text-[9px] sm:text-[10px] text-zinc-400 uppercase tracking-[0.15em] block">
+                Bamako · Mali
+              </span>
             </div>
           </Link>
 
-          {/* Navigation desktop */}
-          <nav className="hidden md:flex items-center gap-1">
+          {/* Desktop Navigation */}
+          <nav className="hidden xl:flex items-center gap-1">
             {[
-              { label: "Accueil", href: "/" },
-              { label: "À propos", href: "/a-propos" },
-              { label: "Missions", href: "/missions" },
-              { label: "Services", href: "/services" },
-              { label: "Actualités", href: "/actualites" },
+              { label: "Créations", href: "#velvet-creations" },
+              { label: "La Carte", href: "#carte" },
+              { label: "L'Atelier", href: "#atelier" },
+              { label: "Critiques", href: "#avis" },
+              { label: "La Maison", href: "/a-propos" },
+              { label: "Contact", href: "/contact" },
             ].map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all"
+                className="px-3 py-1.5 text-xs font-semibold text-zinc-300 hover:text-white hover:bg-zinc-800 rounded-lg transition-colors"
               >
                 {link.label}
               </Link>
             ))}
-            <Link href="/contact" className="ml-4 btn btn-primary btn-sm">
-              Nous contacter
-            </Link>
           </nav>
 
-          {/* Bouton menu mobile */}
+          {/* Action CTA */}
+          <div className="hidden sm:flex items-center gap-3 shrink-0">
+            <a
+              href="tel:+22320708090"
+              className="text-xs font-semibold text-zinc-300 hover:text-white transition-colors hidden md:inline-block"
+            >
+              +223 20 70 80 90
+            </a>
+
+            <button
+              onClick={onOpenReservation}
+              className="px-4 py-2 rounded-lg bg-amber-400 hover:bg-amber-300 text-black font-bold text-xs transition-colors cursor-pointer"
+            >
+              Réserver une table
+            </button>
+          </div>
+
+          {/* Mobile menu toggle */}
           <button
-            className="md:hidden flex flex-col justify-center items-center w-11 h-11 rounded-xl border border-white/10 bg-surface hover:bg-white/5 transition-all"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-expanded={isMobileMenuOpen}
+            className="xl:hidden p-2 rounded-lg bg-zinc-800 border border-zinc-700 text-white cursor-pointer"
             aria-label="Ouvrir le menu"
           >
-            <span
-              className={`w-5 h-0.5 bg-white rounded transition-all duration-300 ${isMobileMenuOpen ? "rotate-45 translate-y-1.5" : "-translate-y-1"}`}
-            ></span>
-            <span
-              className={`w-5 h-0.5 bg-white rounded transition-all duration-300 mt-1 ${isMobileMenuOpen ? "opacity-0" : "opacity-100"}`}
-            ></span>
-            <span
-              className={`w-5 h-0.5 bg-white rounded transition-all duration-300 mt-1 ${isMobileMenuOpen ? "-rotate-45 -translate-y-1.5" : "translate-y-1"}`}
-            ></span>
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
 
-        {/* Menu mobile */}
+        {/* Mobile menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-white/5 pb-6 pt-4 animate-in slide-in-from-top duration-300">
-            <nav className="flex flex-col gap-2">
+          <div className="xl:hidden border-t border-zinc-800 py-4 space-y-3 bg-[#0A0A0C]">
+            <nav className="flex flex-col gap-1">
               {[
-                { label: "Accueil", href: "/" },
-                { label: "À propos", href: "/a-propos" },
-                { label: "Missions", href: "/missions" },
-                { label: "Services", href: "/services" },
-                { label: "Actualités", href: "/actualites" },
+                { label: "Créations", href: "#velvet-creations" },
+                { label: "La Carte", href: "#carte" },
+                { label: "L'Atelier", href: "#atelier" },
+                { label: "Critiques", href: "#avis" },
+                { label: "La Maison", href: "/a-propos" },
+                { label: "Contact", href: "/contact" },
               ].map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all"
                   onClick={() => setIsMobileMenuOpen(false)}
+                  className="px-3 py-2 text-sm font-medium text-zinc-200 hover:bg-zinc-800 rounded-lg"
                 >
                   {link.label}
                 </Link>
               ))}
-              <Link
-                href="/contact"
-                className="mt-4 btn btn-primary btn-md w-full justify-center"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Nous contacter
-              </Link>
             </nav>
+
+            <div className="pt-2 border-t border-zinc-800">
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  if (onOpenReservation) onOpenReservation();
+                }}
+                className="w-full py-2.5 rounded-lg bg-amber-400 text-black font-bold text-xs text-center cursor-pointer"
+              >
+                Réserver une table
+              </button>
+            </div>
           </div>
         )}
       </div>
