@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="100%" height="100%">
+  <defs>
+    <linearGradient id="smtd-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="smtd-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#769FCD"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+  <!-- Background circle with subtle border -->
+  <rect width="128" height="128" rx="28" fill="url(#smtd-bg)"/>
+  <rect x="2" y="2" width="124" height="124" rx="26" fill="none" stroke="#769FCD" stroke-width="2" stroke-opacity="0.3"/>
+
+  <!-- Mali Tricolor Accent Ribbon at Top -->
+  <g transform="translate(24, 18)">
+    <rect x="0" y="0" width="26" height="4" rx="2" fill="#008751" />
+    <rect x="27" y="0" width="26" height="4" rx="2" fill="#FCD116" />
+    <rect x="54" y="0" width="26" height="4" rx="2" fill="#CE1126" />
+  </g>
+
+  <!-- Digital Transmission / Broadcast Tower & Waves Motif -->
+  <g transform="translate(64, 68)" text-anchor="middle">
+    <!-- Broadcast Waves -->
+    <path d="M -36 -12 A 42 42 0 0 1 36 -12" fill="none" stroke="#769FCD" stroke-width="4" stroke-linecap="round" opacity="0.4"/>
+    <path d="M -24 -4 A 28 28 0 0 1 24 -4" fill="none" stroke="#769FCD" stroke-width="4.5" stroke-linecap="round" opacity="0.75"/>
+    <path d="M -12 4 A 14 14 0 0 1 12 4" fill="none" stroke="#769FCD" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- Central Transmitter Core -->
+    <circle cx="0" cy="14" r="7" fill="#FCD116"/>
+    <polygon points="0,18 -16,42 16,42" fill="url(#smtd-blue)"/>
+    <line x1="-12" y1="32" x2="12" y2="32" stroke="#FFFFFF" stroke-width="2" opacity="0.8"/>
+  </g>
+</svg>

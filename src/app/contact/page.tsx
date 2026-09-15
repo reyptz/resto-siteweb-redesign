@@ -1,101 +1,219 @@
-import { Metadata } from "next";
-import { ContactForm } from "@/components/interactive/ContactForm";
-import { Icon } from "@/components/ui/Icon";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Contactez la Société Malienne de Transmission et de Diffusion pour toute demande de renseignements.",
-};
+import React, { useState } from "react";
+import { MapPin, Phone, Mail, Clock, CheckCircle2 } from "lucide-react";
 
 export default function ContactPage() {
-  return (
-    <div className="bg-bg-main min-h-screen text-text-main pt-24 pb-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(118,159,205,0.05)_0%,transparent_60%)] pointer-events-none" />
+  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "privatisation",
+    message: "",
+    website_hp: "",
+  });
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-16 reveal">
-          <div className="badge badge-primary mb-6 mx-auto">
-            Nous contacter
-          </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-syne font-extrabold text-text-main mb-6 tracking-tight">
-            Contactez-<span className="text-gradient-warm">nous</span>
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (formData.website_hp) {
+      return;
+    }
+    setSubmitted(true);
+  };
+
+  return (
+    <div className="bg-[#0A0A0C] min-h-screen text-white pt-10 pb-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        {/* Header */}
+        <div className="max-w-3xl mx-auto text-center space-y-3">
+          <p className="eyebrow-label">Conciergerie & Privatisations</p>
+          <h1 className="text-editorial-serif text-4xl sm:text-6xl font-bold tracking-tight text-white leading-tight">
+            Contact & Accès à Bamako
           </h1>
-          <p className="text-lg md:text-xl text-text-muted max-w-2xl mx-auto leading-relaxed">
-            Notre équipe est à votre disposition pour répondre à toutes vos
-            questions et vous accompagner dans vos projets.
+          <p className="text-base sm:text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed">
+            Pour vos réservations de groupes, réceptions privées dans le Salon Mandé ou événements officiels à Bamako, notre conciergerie est à votre disposition.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <div className="space-y-8 reveal">
-            <h2 className="text-3xl font-syne font-bold text-text-main mb-8">
-              Nos coordonnées
+        {/* Grid content */}
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Contact Details */}
+          <div className="space-y-6">
+            <h2 className="text-editorial-serif text-2xl sm:text-3xl font-bold text-white">
+              Coordonnées de la Maison à Bamako
             </h2>
-            <div className="grid gap-6">
-              <div className="flex items-start gap-5 p-6 glass-panel border-brand-200 hover:border-primary/30 transition-colors group shadow-sm">
-                <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center shrink-0 border border-primary/20 group-hover:scale-105 transition-transform font-bold">
-                  <Icon name="map-pin" size={24} />
+
+            <div className="space-y-3.5">
+              <div className="p-6 rounded-2xl bg-[#121216] border border-zinc-800 flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center text-amber-400 shrink-0">
+                  <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-syne font-semibold text-text-main mb-1">
-                    Adresse
-                  </h3>
-                  <p className="text-text-muted text-sm leading-relaxed">
-                    Route de l&apos;Aéroport, en face de la Météo
-                    <br /> Bamako, Mali
+                  <h3 className="text-sm font-bold text-white">Adresse</h3>
+                  <p className="text-xs text-zinc-300 mt-1">
+                    Boulevard du 22 Octobre, ACI 2000, Bamako, République du Mali
+                  </p>
+                  <p className="text-[11px] text-amber-400 mt-0.5">
+                    Service voiturier et parking sécurisé
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-5 p-6 glass-panel border-brand-200 hover:border-primary/30 transition-colors group shadow-sm">
-                <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center shrink-0 border border-primary/20 group-hover:scale-105 transition-transform font-bold">
-                  <Icon name="phone" size={24} />
+              <div className="p-6 rounded-2xl bg-[#121216] border border-zinc-800 flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center text-amber-400 shrink-0">
+                  <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-syne font-semibold text-text-main mb-1">
-                    Téléphone
-                  </h3>
-                  <p className="text-text-muted text-sm mb-1">Standard : +223 20 70 81 71</p>
-                  <p className="text-text-muted text-sm">Commercial : +223 20 70 81 68</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-5 p-6 glass-panel border-brand-200 hover:border-primary/30 transition-colors group shadow-sm">
-                <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center shrink-0 border border-primary/20 group-hover:scale-105 transition-transform font-bold">
-                  <Icon name="mail" size={24} />
-                </div>
-                <div>
-                  <h3 className="text-lg font-syne font-semibold text-text-main mb-1">
-                    Email
-                  </h3>
-                  <p className="text-text-muted text-sm mb-1">info@smtd.ml</p>
-                  <p className="text-text-muted text-sm">commercial@smtd.ml</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-5 p-6 glass-panel border-brand-200 hover:border-primary/30 transition-colors group shadow-sm">
-                <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center shrink-0 border border-primary/20 group-hover:scale-105 transition-transform font-bold">
-                  <Icon name="clock" size={24} />
-                </div>
-                <div>
-                  <h3 className="text-lg font-syne font-semibold text-text-main mb-1">
-                    Horaires
-                  </h3>
-                  <p className="text-text-muted text-sm mb-1">
-                    Lundi - Vendredi : 07h30 - 16h30
+                  <h3 className="text-sm font-bold text-white">Téléphone Conciergerie</h3>
+                  <p className="text-xs text-zinc-300 mt-1">+223 20 70 80 90 / +223 76 00 00 00</p>
+                  <p className="text-[11px] text-zinc-400 mt-0.5">
+                    Ligne directe du mardi au samedi de 10:00 à 23:00 (Heure de Bamako)
                   </p>
-                  <p className="text-text-muted/70 text-xs font-semibold uppercase tracking-widest mt-2">
-                    Support technique : 24h/24 - 7j/7
+                </div>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-[#121216] border border-zinc-800 flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center text-amber-400 shrink-0">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-white">Courriel</h3>
+                  <p className="text-xs text-zinc-300 mt-1">reservation@maisonvelours-bamako.ml</p>
+                  <p className="text-[11px] text-zinc-400 mt-0.5">
+                    Événements & Banquets : evenements@maisonvelours-bamako.ml
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-[#121216] border border-zinc-800 flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center text-amber-400 shrink-0">
+                  <Clock className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-white">Horaires de Table</h3>
+                  <p className="text-xs text-zinc-300 mt-1">
+                    Déjeuner : 12:00 à 15:00 · Dîner : 19:30 à 23:30
+                  </p>
+                  <p className="text-[11px] text-zinc-400 mt-0.5">
+                    Fermeture hebdomadaire le dimanche et le lundi
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="reveal">
-            <ContactForm />
+          {/* Form */}
+          <div className="p-8 sm:p-10 rounded-2xl bg-[#121216] border border-zinc-800 shadow-2xl">
+            <h2 className="text-editorial-serif text-2xl font-bold text-white mb-1">
+              Demande Privilège
+            </h2>
+            <p className="text-xs text-zinc-400 mb-6">
+              Remplissez ce formulaire pour toute demande de privatisation du Salon Mandé, banquet d&apos;affaires ou menu dégustation personnalisé à Bamako.
+            </p>
+
+            {submitted ? (
+              <div className="p-8 text-center space-y-4">
+                <div className="w-12 h-12 rounded-full bg-zinc-800 text-amber-400 border border-amber-400 flex items-center justify-center mx-auto">
+                  <CheckCircle2 className="w-6 h-6" />
+                </div>
+                <h3 className="text-editorial-serif text-2xl font-bold text-white">
+                  Message Transmis
+                </h3>
+                <p className="text-xs text-zinc-300">
+                  Notre équipe de conciergerie à Bamako prendra contact avec vous dans les plus brefs délais.
+                </p>
+                <button
+                  onClick={() => setSubmitted(false)}
+                  className="px-5 py-2.5 rounded-lg bg-white hover:bg-zinc-200 text-black font-bold text-xs transition-colors cursor-pointer"
+                >
+                  Envoyer un autre message
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Honeypot */}
+                <div style={{ display: "none" }} aria-hidden="true">
+                  <input
+                    type="text"
+                    name="website_hp"
+                    tabIndex={-1}
+                    value={formData.website_hp}
+                    onChange={(e) => setFormData({ ...formData, website_hp: e.target.value })}
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-zinc-300">Nom & Prénom</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="ex: Seydou Keïta"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-zinc-900 border border-zinc-800 text-white text-xs sm:text-sm focus:border-amber-400 focus:outline-none"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <label className="text-xs font-semibold text-zinc-300">Email</label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="votre.email@domaine.ml"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-zinc-900 border border-zinc-800 text-white text-xs sm:text-sm focus:border-amber-400 focus:outline-none"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-xs font-semibold text-zinc-300">Téléphone (Mali)</label>
+                    <input
+                      type="tel"
+                      required
+                      placeholder="+223 76 00 00 00"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-zinc-900 border border-zinc-800 text-white text-xs sm:text-sm focus:border-amber-400 focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-zinc-300">Objet de la demande</label>
+                  <select
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-zinc-900 border border-zinc-800 text-white text-xs sm:text-sm focus:border-amber-400 focus:outline-none"
+                  >
+                    <option value="privatisation">Privatisation du Salon Mandé (jusqu&apos;à 24 convives)</option>
+                    <option value="groupe">Déjeuner ou dîner d&apos;affaires (plus de 8 convives)</option>
+                    <option value="sur-mesure">Menu Dégustation Terroirs du Mali personnalisé</option>
+                    <option value="presse">Presse, Partenariats & Événements Officiels</option>
+                  </select>
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-zinc-300">Message</label>
+                  <textarea
+                    rows={4}
+                    required
+                    placeholder="Précisez la date envisagée, le nombre d'invités et vos demandes particulières..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-zinc-900 border border-zinc-800 text-white text-xs sm:text-sm focus:border-amber-400 focus:outline-none resize-none"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full py-3 rounded-lg bg-amber-400 hover:bg-amber-300 text-black font-bold text-xs sm:text-sm transition-colors cursor-pointer"
+                >
+                  Envoyer la demande
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>

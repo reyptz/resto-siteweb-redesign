@@ -1,0 +1,9 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow internal API routes and private assets
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://smtd.ml/sitemap.xml
